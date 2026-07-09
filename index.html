@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cambodia Startup Review | Prototype</title>
+  <meta name="description" content="Cambodia Startup Review prototype - neutral startup intelligence and ecosystem visibility platform." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Cambodia Startup Review home">
+        <span class="brand-mark">CSR</span>
+        <span class="brand-text">Cambodia Startup Review</span>
+      </a>
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+      <nav class="nav" id="nav">
+        <a href="#directory">Startups</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#insights">Insights</a>
+        <a href="#events">Events</a>
+        <a href="#partners" class="nav-cta">Founding Partner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Neutral startup intelligence platform</p>
+          <h1>Mapping Cambodia’s Startup & Innovation Ecosystem</h1>
+          <p class="hero-subtitle">Cambodia Startup Review curates startup profiles, ecosystem insights, founder stories, and partner opportunities to strengthen Cambodia’s innovation visibility locally and globally.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#partners">Become a Founding Partner</a>
+            <a class="button secondary" href="#submit">Submit Your Startup</a>
+          </div>
+          <p class="microcopy">Demo prototype operated by Toptimize Co., Ltd. for desirability testing.</p>
+        </div>
+        <div class="hero-card" aria-label="CSR impact preview">
+          <div class="metric-row"><span>17</span><p>sample startup profiles</p></div>
+          <div class="metric-row"><span>8</span><p>ecosystem categories</p></div>
+          <div class="metric-row"><span>3</span><p>founding partner slots</p></div>
+          <div class="map-box">
+            <div class="dot dot-a"></div><div class="dot dot-b"></div><div class="dot dot-c"></div>
+            <p>Cambodia ecosystem visibility layer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow center">What is CSR?</p>
+        <h2 class="center">A trusted entry point into Cambodia’s startup ecosystem</h2>
+        <p class="center muted">CSR is not an association, government body, or investment fund. It is a neutral platform that helps startups get discovered and helps partners understand Cambodia’s innovation landscape.</p>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">What we do</p>
+          <h2>Platform pillars</h2>
+        </div>
+        <div class="card-grid three">
+          <article class="info-card"><h3>Startup Profiles & Mapping</h3><p>Curated startup profiles across sectors, stages, regions, founders, funding status, and support needs.</p></article>
+          <article class="info-card"><h3>Ecosystem Reports & Insights</h3><p>Annual and thematic reports highlighting trends, gaps, investment signals, and partnership opportunities.</p></article>
+          <article class="info-card"><h3>Founder & Innovation Stories</h3><p>Positive, credible storytelling that helps Cambodian founders reach sponsors, investors, and international partners.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="directory">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Startup directory</p>
+            <h2>Discover startup profiles</h2>
+          </div>
+          <a class="button secondary small" href="#submit">Submit a Startup</a>
+        </div>
+        <div class="filters" aria-label="Startup filters">
+          <input type="search" id="searchInput" placeholder="Search startups, sectors, or support needs..." />
+          <select id="sectorFilter" aria-label="Filter by sector"><option value="all">All sectors</option></select>
+          <select id="stageFilter" aria-label="Filter by stage"><option value="all">All stages</option></select>
+        </div>
+        <div class="startup-count" id="startupCount"></div>
+        <div class="card-grid" id="startupGrid"></div>
+      </div>
+    </section>
+
+    <section class="section light" id="ecosystem">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Ecosystem map</p>
+          <h2>Who makes the ecosystem work?</h2>
+          <p class="muted">A simple categorized map for the MVP. The next version can become a searchable ecosystem database.</p>
+        </div>
+        <div class="ecosystem-grid" id="ecosystemGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="insights">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Insights</p>
+            <h2>Stories, signals, and ecosystem intelligence</h2>
+          </div>
+          <span class="badge">Sample content</span>
+        </div>
+        <div class="card-grid three" id="insightGrid"></div>
+      </div>
+    </section>
+
+    <section class="section light" id="events">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Events calendar</p>
+          <h2>Upcoming ecosystem activities</h2>
+        </div>
+        <div class="event-list" id="eventList"></div>
+      </div>
+    </section>
+
+    <section class="section sponsor" id="partners">
+      <div class="container sponsor-grid">
+        <div>
+          <p class="eyebrow">Founding partner opportunity</p>
+          <h2>Support Cambodia’s innovation narrative from day one</h2>
+          <p>We are inviting a limited number of organizations to become Founding Partners of CSR and help build a neutral, credible platform for startup visibility and ecosystem intelligence.</p>
+          <ul class="check-list">
+            <li>Founding Partner recognition on CSR homepage</li>
+            <li>Visibility in Cambodia Startup Review Report</li>
+            <li>Co-branded invite-only ecosystem roundtable</li>
+            <li>Early association before regional expansion</li>
+            <li>Clear sponsor/editorial separation</li>
+          </ul>
+        </div>
+        <div class="offer-card">
+          <p class="eyebrow">Founding Partner Package</p>
+          <h3>USD 6,000 / year</h3>
+          <p>Limited to first 3 partners during MVP validation.</p>
+          <a class="button primary full" href="#partnerForm">Request Partnership Discussion</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="submit">
+      <div class="container form-grid">
+        <div>
+          <p class="eyebrow">Get involved</p>
+          <h2>Submit, partner, or give feedback</h2>
+          <p class="muted">These prototype forms use browser storage only. In production, connect to Airtable, Notion, Supabase, Firebase, or a proper backend.</p>
+          <div id="submissionLog" class="submission-log"></div>
+        </div>
+        <div class="tabs">
+          <div class="tab-buttons" role="tablist">
+            <button class="tab-btn active" data-tab="startupForm">Submit Startup</button>
+            <button class="tab-btn" data-tab="partnerForm">Partner Inquiry</button>
+            <button class="tab-btn" data-tab="feedbackForm">Feedback</button>
+          </div>
+
+          <form class="form-panel active" id="startupForm">
+            <label>Startup name<input required name="startupName" placeholder="e.g., CSR Sample Startup" /></label>
+            <label>Founder name<input required name="founderName" placeholder="Founder name" /></label>
+            <label>Email<input required type="email" name="email" placeholder="founder@email.com" /></label>
+            <label>Sector<input name="sector" placeholder="Fintech, EdTech, HealthTech..." /></label>
+            <label>Website / social<input name="website" placeholder="yourstartup.com or @handle" /></label>
+            <label>Short description<textarea required name="description" placeholder="What does your startup do?"></textarea></label>
+            <label>Support needed<textarea name="support" placeholder="What kind of support are you looking for?"></textarea></label>
+            <button class="button primary" type="submit">Submit Startup</button>
+          </form>
+
+          <form class="form-panel" id="partnerForm">
+            <label>Organization<input required name="organization" placeholder="Company / institution" /></label>
+            <label>Contact person<input required name="contactPerson" placeholder="Name" /></label>
+            <label>Email<input required type="email" name="email" placeholder="name@company.com" /></label>
+            <label>Phone / Telegram<input name="phone" placeholder="+855 or @telegram_handle" /></label>
+            <label>Interest<select name="interest"><option>Founding Partner</option><option>Event Partner</option><option>Media Partner</option><option>Data / Research Partner</option></select></label>
+            <label>Message<textarea name="message" placeholder="Tell us what you are interested in."></textarea></label>
+            <button class="button primary" type="submit">Request Discussion</button>
+          </form>
+
+          <form class="form-panel" id="feedbackForm">
+            <label>I am a<select name="role"><option>Startup founder</option><option>Sponsor / corporate partner</option><option>Investor</option><option>Ecosystem partner</option><option>Government / development partner</option></select></label>
+            <label>Would CSR be useful to you?<select name="useful"><option>Yes</option><option>Maybe</option><option>No</option></select></label>
+            <label>Most valuable feature<textarea name="feature" placeholder="What should CSR build first?"></textarea></label>
+            <button class="button primary" type="submit">Send Feedback</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Cambodia Startup Review</strong>
+        <p>Neutral startup intelligence and ecosystem visibility platform.</p>
+      </div>
+      <div>
+        <strong>Operated by</strong>
+        <p>Toptimize Co., Ltd. | Phnom Penh, Cambodia</p>
+      </div>
+      <div>
+        <strong>Governance</strong>
+        <p>Not an association, not a government body, and not an investment fund.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
