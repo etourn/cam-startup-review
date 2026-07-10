@@ -1,4 +1,4 @@
-# Cambodia Startup Review — Homepage (Day 2 draft, revised per Day 1 sign-off)
+# Cambodia Startup Review 
 
 Static HTML/CSS/JS build — continuing on the original approved prototype,
 per the Day 1 tool choice decision. Visual direction (navy/gold/white,
