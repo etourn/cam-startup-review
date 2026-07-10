@@ -4,42 +4,42 @@
    ============================================================ */
 
 const startups = [
-  { name: 'Wonder Ventures', sector: 'Tourism', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Flexible, meaningful travel experiences connecting visitors with local communities and sustainable destinations.', problem: 'Travelers struggle to find authentic, community-based trips beyond standard tour packages.', website: 'wonderventures.example', funding: 'Bootstrapped', support: 'B2B partners, hotels, guides, restaurants, and marketing strategy mentors.' },
-  { name: 'Zoneer', sector: 'PropTech', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Digital property management platform replacing paper notes, Excel sheets, and scattered messaging.', problem: 'Small landlords and property managers rely on manual, error-prone record keeping.', website: 'zoneer.example', funding: 'Pre-seed', support: 'Law firms, insurance partners, mentors, and investment partners.' },
-  { name: 'HikaruLab', sector: 'F&B', stage: 'Revenue', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'One-stop solution for cafe and bakery shops, starting with classic-grade matcha powder.', problem: 'Cafes struggle to source consistent, quality matcha at fair wholesale prices.', website: 'hikarulab.example', funding: 'Revenue-generating', support: 'Distribution partners, cafes, marketing and distribution mentors.' },
-  { name: 'QlinicOS', sector: 'HealthTech', stage: 'Prototype', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'AI-powered clinical operations platform for documentation, triage, and patient care coordination.', problem: 'Clinics lose time on manual documentation instead of patient care.', website: 'qlinicos.example', funding: 'Seed (raising)', support: 'Healthcare mentors, clinic/hospital pilots, telecom/public sector partners.' },
-  { name: 'VADATA', sector: 'Data', stage: 'Prototype', founder: 'Sample Founder', location: 'Cambodia', desc: 'Market insights platform helping early-stage founders make faster, smarter market decisions.', problem: 'Founders lack access to reliable, localized market data before making decisions.', website: 'vadata.example', funding: 'Pre-seed', support: 'Government data partners, researchers, licensing and verification advisors.' },
-  { name: 'Byte Lab', sector: 'EdTech', stage: 'Prototype', founder: 'Sample Founder', location: 'Cambodia', desc: 'Robotic solutions and educational robotics kits for schools and hands-on learning.', problem: 'Schools lack affordable, hands-on STEM learning tools.', website: 'bytelab.example', funding: 'Bootstrapped', support: 'Educational partners and supply chain partners.' },
-  { name: 'LoopIt', sector: 'FoodTech', stage: 'Pilot', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Platform helping cafes, bakeries, supermarkets and marts sell end-of-day food at discounted prices.', problem: 'Food businesses throw away unsold inventory at the end of each day.', website: 'loopit.example', funding: 'Pre-seed', support: 'Cafes, bakeries, supermarkets, universities, and pilot partners.' },
-  { name: 'MiniLab', sector: 'EdTech', stage: 'Revenue', founder: 'Sample Founder', location: 'Cambodia', desc: 'Plug-and-play robotics and IoT kits turning classrooms into creative labs.', problem: 'Teachers need ready-to-use STEM kits without technical setup overhead.', website: 'minilab.example', funding: 'Revenue-generating', support: 'Private schools, retail distribution, and local manufacturing partners.' },
-  { name: 'Tokkatot', sector: 'AgriTech', stage: 'Prototype', founder: 'Sample Founder', location: 'Cambodia', desc: 'Smart chicken farming system integrating IoT, automation, and AI for poultry households.', problem: 'Smallholder poultry farmers lack tools to monitor flock health and conditions.', website: 'tokkatot.example', funding: 'Pre-seed', support: 'Agriculture experts, IoT advisors, cooperatives, and hardware suppliers.' }
+  { name: 'Wonder Ventures', sector: 'Tourism', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Flexible, meaningful travel experiences connecting visitors with local communities and sustainable destinations.', support: 'B2B partners, hotels, guides, restaurants, and marketing strategy mentors.', supportTag: 'Partnerships', funding: 'Bootstrapped', website: 'wonderventures.kh (demo)' },
+  { name: 'Zoneer', sector: 'PropTech', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Digital property management platform replacing paper notes, Excel sheets, and scattered messaging.', support: 'Law firms, insurance partners, mentors, and investment partners.', supportTag: 'Investment', funding: 'Pre-seed raised', website: 'zoneer.kh (demo)' },
+  { name: 'HikaruLab', sector: 'F&B', stage: 'Revenue', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'One-stop solution for cafe and bakery shops, starting with classic-grade matcha powder.', support: 'Distribution partners, cafes, marketing and distribution mentors.', supportTag: 'Distribution', funding: 'Revenue-generating', website: 'hikarulab.kh (demo)' },
+  { name: 'QlinicOS', sector: 'HealthTech', stage: 'Prototype', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'AI-powered clinical operations platform for documentation, triage, and patient care coordination.', support: 'Healthcare mentors, clinic/hospital pilots, telecom/public sector partners.', supportTag: 'Pilot programs', funding: 'Prototype stage', website: 'qlinicos.kh (demo)' },
+  { name: 'VADATA', sector: 'Data', stage: 'Prototype', founder: 'Sample Founder', location: 'Cambodia', desc: 'Market insights platform helping early-stage founders make faster, smarter market decisions.', support: 'Government data partners, researchers, licensing and verification advisors.', supportTag: 'Partnerships', funding: 'Prototype stage', website: 'vadata.kh (demo)' },
+  { name: 'Byte Lab', sector: 'EdTech', stage: 'Prototype', founder: 'Sample Founder', location: 'Cambodia', desc: 'Robotic solutions and educational robotics kits for schools and hands-on learning.', support: 'Educational partners and supply chain partners.', supportTag: 'Distribution', funding: 'Prototype stage', website: 'bytelab.kh (demo)' },
+  { name: 'LoopIt', sector: 'FoodTech', stage: 'Pilot', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Platform helping cafes, bakeries, supermarkets and marts sell end-of-day food at discounted prices.', support: 'Cafes, bakeries, supermarkets, universities, and pilot partners.', supportTag: 'Pilot programs', funding: 'Piloting', website: 'loopit.kh (demo)' },
+  { name: 'MiniLab', sector: 'EdTech', stage: 'Revenue', founder: 'Sample Founder', location: 'Cambodia', desc: 'Plug-and-play robotics and IoT kits turning classrooms into creative labs.', support: 'Private schools, retail distribution, and local manufacturing partners.', supportTag: 'Distribution', funding: 'Revenue-generating', website: 'minilab.kh (demo)' },
+  { name: 'Tokkatot', sector: 'AgriTech', stage: 'Prototype', founder: 'Sample Founder', location: 'Cambodia', desc: 'Smart chicken farming system integrating IoT, automation, and AI for poultry households.', support: 'Agriculture experts, IoT advisors, cooperatives, and hardware suppliers.', supportTag: 'Mentorship', funding: 'Prototype stage', website: 'tokkatot.kh (demo)' },
+  { name: 'PayNear', sector: 'FinTech', stage: 'Pilot', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Mobile micro-payment platform for informal market vendors without bank accounts.', support: 'Banking partners, regulatory advisors, and seed investors.', supportTag: 'Investment', funding: 'Raising pre-seed', website: 'paynear.kh (demo)' },
+  { name: 'StaffLoop', sector: 'HRTech', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Shift-based hiring platform connecting hospitality businesses with verified part-time workers.', support: 'Hospitality partners, verification agencies, and recruiters.', supportTag: 'Talent & hiring', funding: 'Bootstrapped', website: 'staffloop.kh (demo)' }
 ];
-
-// Ecosystem Actor: Organization name, category, description, website, contact, role in ecosystem
-const ecosystemActors = [
-  { org: 'Mekong Angels Network', category: 'Investors', description: 'Early-stage angel syndicate backing Cambodian founders.', website: 'mekongangels.example', contact: 'hello@mekongangels.example', role: 'Provides pre-seed and seed capital.' },
-  { org: 'Impact Hub Phnom Penh', category: 'Incubators & Accelerators', description: 'Coworking and accelerator space supporting early founders.', website: 'impacthubpp.example', contact: 'programs@impacthubpp.example', role: 'Runs cohort-based incubation programs.' },
-  { org: 'RUPP Entrepreneurship Center', category: 'Universities', description: 'University center connecting student founders with mentors.', website: 'rupp.example', contact: 'entrepreneurship@rupp.example', role: 'Sources early founder talent and campus programs.' },
-  { org: 'Digital Economy & Society Council', category: 'Government Actors', description: 'National body coordinating Cambodia\u2019s digital economy policy.', website: 'dresc.example', contact: 'info@dresc.example', role: 'Sets policy and funding programs for the digital economy.' },
-  { org: 'ABA Innovation Lab', category: 'Corporate Innovation', description: 'Banking-sector innovation team piloting fintech partnerships.', website: 'abalab.example', contact: 'innovation@abalab.example', role: 'Pilots and co-invests with fintech and payments startups.' },
-  { org: 'Mekong Development Partners', category: 'Development Partners', description: 'International donor program funding SME and startup growth.', website: 'mdp.example', contact: 'grants@mdp.example', role: 'Funds ecosystem-building grants and technical assistance.' },
-  { org: 'Startup Cambodia Media', category: 'Media & Events', description: 'Independent media covering the local founder community.', website: 'startupcambodia.example', contact: 'editor@startupcambodia.example', role: 'Covers founder stories and hosts demo events.' },
-  { org: 'CamTech Ventures', category: 'Investors', description: 'Seed-to-Series A fund focused on Southeast Asian tech.', website: 'camtechvc.example', contact: 'deals@camtechvc.example', role: 'Leads and co-leads priced seed rounds.' }
+ 
+const ecosystem = [
+  { category: 'Startups', items: ['Digital services', 'Tourism', 'HealthTech', 'AgriTech'] },
+  { category: 'Investors', items: ['Angel investors', 'VCs', 'Corporate venture teams'] },
+  { category: 'Incubators & Accelerators', items: ['University programs', 'Corporate accelerators', 'Startup hubs'] },
+  { category: 'Universities', items: ['Entrepreneurship centers', 'STEM departments', 'Career offices'] },
+  { category: 'Government Actors', items: ['Digital economy bodies', 'Startup support programs', 'Skills agencies'] },
+  { category: 'Corporate Innovation', items: ['Telecoms', 'Banks', 'Technology firms'] },
+  { category: 'Development Partners', items: ['Donors', 'NGOs', 'International agencies'] },
+  { category: 'Media & Events', items: ['Startup media', 'Demo days', 'Pitch events'] }
 ];
-
-// Article/Insight: Title, category, author, image, summary, body, date, tags
+ 
 const insights = [
-  { title: 'Why Cambodia Needs a Startup Intelligence Platform', category: 'Ecosystem Analysis', author: 'CSR Editorial Team', date: 'Jan 2026', tags: ['Ecosystem', 'Data'], summary: 'A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.', body: 'Cambodia\u2019s startup activity is real but scattered across informal networks, private group chats, and one-off event lists. A neutral, continuously updated platform lets founders, sponsors, and policymakers see the same picture \u2014 who exists, what stage they are at, and where the gaps are \u2014 instead of relying on who happens to be in the room.' },
-  { title: 'Founder Story: Building for Local Problems', category: 'Founder Story', author: 'CSR Editorial Team', date: 'Feb 2026', tags: ['Founders', 'AgriTech'], summary: 'How Cambodian founders are turning practical challenges into startup opportunities.', body: 'The strongest early-stage companies in Cambodia are not copying regional trends \u2014 they are solving problems the founders lived through directly, from smallholder farming to informal retail. This piece profiles three founders building for problems they know first-hand.' },
-  { title: 'What Sponsors Want from Startup Ecosystem Platforms', category: 'Sponsor Insight', author: 'CSR Editorial Team', date: 'Mar 2026', tags: ['Sponsors', 'Partnerships'], summary: 'Visibility, credibility, ESG alignment, and curated access to innovation pipelines.', body: 'Conversations with prospective Founding Partners point to four consistent asks: credible visibility, alignment with ESG and CSR commitments, curated (not overwhelming) access to relevant startups, and clear separation between sponsor content and editorial coverage.' }
+  { title: 'Why Cambodia Needs a Startup Intelligence Platform', category: 'Ecosystem Analysis', summary: 'A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.' },
+  { title: 'Founder Story: Building for Local Problems', category: 'Founder Story', summary: 'How Cambodian founders are turning practical challenges into startup opportunities.' },
+  { title: 'What Sponsors Want from Startup Ecosystem Platforms', category: 'Sponsor Insight', summary: 'Visibility, credibility, ESG alignment, and curated access to innovation pipelines.' }
+];
+ 
+const events = [
+  { date: 'Mar 2026', name: 'CSR Founding Partner Roundtable', organizer: 'Toptimize', type: 'Roundtable', location: 'Phnom Penh' },
+  { date: 'Apr 2026', name: 'Cambodia Startup Mapping Sprint', organizer: 'CSR', type: 'Workshop', location: 'Hybrid' },
+  { date: 'May 2026', name: 'Founder Visibility Demo Night', organizer: 'CSR Partners', type: 'Demo Day', location: 'Phnom Penh' }
 ];
 
-// Event: Name, organizer, date, time, venue, type, description, registration link
-const events = [
-  { date: 'Mar 2026', time: '5:30 PM', name: 'CSR Founding Partner Roundtable', organizer: 'Toptimize', type: 'Roundtable', venue: 'Phnom Penh', description: 'Invite-only roundtable introducing CSR to prospective Founding Partners.', registrationLink: '#partners' },
-  { date: 'Apr 2026', time: '9:00 AM', name: 'Cambodia Startup Mapping Sprint', organizer: 'CSR', type: 'Workshop', venue: 'Hybrid', description: 'A working session to crowdsource and verify startup profiles for the directory.', registrationLink: '#submit' },
-  { date: 'May 2026', time: '6:00 PM', name: 'Founder Visibility Demo Night', organizer: 'CSR Partners', type: 'Demo Day', venue: 'Phnom Penh', description: 'Selected founders pitch to sponsors, investors, and ecosystem partners.', registrationLink: '#submit' }
-];
 
 /* ============================================================
    Google Forms configuration
@@ -102,106 +102,66 @@ const startupGrid = document.getElementById('startupGrid');
 const searchInput = document.getElementById('searchInput');
 const sectorFilter = document.getElementById('sectorFilter');
 const stageFilter = document.getElementById('stageFilter');
+const supportFilter = document.getElementById('supportFilter');
 const startupCount = document.getElementById('startupCount');
-
-function initials(name) {
-  return name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
-}
-
+ 
 function uniqueValues(key) { return [...new Set(startups.map(s => s[key]))].sort(); }
 function populateFilters() {
   uniqueValues('sector').forEach(v => sectorFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
   uniqueValues('stage').forEach(v => stageFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
+  uniqueValues('supportTag').forEach(v => supportFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
 }
-
+function initials(name) { return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(); }
 function renderStartups() {
   const term = searchInput.value.toLowerCase();
   const sector = sectorFilter.value;
   const stage = stageFilter.value;
+  const supportTag = supportFilter.value;
   const filtered = startups.filter(s => {
-    const matchesTerm = [s.name, s.sector, s.stage, s.desc, s.problem, s.support].join(' ').toLowerCase().includes(term);
+    const matchesTerm = [s.name, s.sector, s.stage, s.desc, s.support].join(' ').toLowerCase().includes(term);
     const matchesSector = sector === 'all' || s.sector === sector;
     const matchesStage = stage === 'all' || s.stage === stage;
-    return matchesTerm && matchesSector && matchesStage;
+    const matchesSupport = supportTag === 'all' || s.supportTag === supportTag;
+    return matchesTerm && matchesSector && matchesStage && matchesSupport;
   });
   startupCount.textContent = `${filtered.length} startup profile${filtered.length === 1 ? '' : 's'} shown`;
+  if (!filtered.length) {
+    startupGrid.innerHTML = `<div class="empty-state">No startups match these filters yet. Try clearing a filter, or <a href="#submit">submit a startup</a> to add one.</div>`;
+    return;
+  }
   startupGrid.innerHTML = filtered.map(s => `
     <article class="startup-card">
-      <div class="card-top">
-        <span class="logo-placeholder">${initials(s.name)}</span>
-        <div class="tags"><span class="tag">${s.sector}</span><span class="tag gold">${s.stage}</span></div>
+      <div class="startup-card-head">
+        <div class="avatar">${initials(s.name)}</div>
+        <div>
+          <h3>${s.name}</h3>
+          <p class="muted small">${s.location} • ${s.founder}</p>
+        </div>
       </div>
-      <h3>${s.name}</h3>
+      <div class="tags"><span class="tag">${s.sector}</span><span class="tag gold">${s.stage}</span><span class="tag funding">${s.funding}</span></div>
       <p>${s.desc}</p>
-      <p class="problem"><strong>Problem solved:</strong> ${s.problem}</p>
-      <p class="muted"><strong>Location:</strong> ${s.location} | <strong>Founder:</strong> ${s.founder}</p>
-      <p class="muted"><strong>Funding:</strong> ${s.funding} | <strong>Website:</strong> ${s.website}</p>
       <div class="support"><strong>Support needed:</strong> ${s.support}</div>
+      <span class="card-link">${s.website}</span>
     </article>
   `).join('');
 }
-
+ 
 function renderEcosystem() {
-  const categories = [...new Set(ecosystemActors.map(a => a.category))];
-  document.getElementById('ecosystemGrid').innerHTML = categories.map(cat => {
-    const actors = ecosystemActors.filter(a => a.category === cat);
-    return `
-      <article class="ecosystem-card">
-        <h3>${cat}</h3>
-        ${actors.map(a => `
-          <div class="actor">
-            <p class="actor-name">${a.org}</p>
-            <p class="muted">${a.description}</p>
-            <p class="actor-role"><strong>Role:</strong> ${a.role}</p>
-            <p class="muted small">${a.website} &middot; ${a.contact}</p>
-          </div>
-        `).join('')}
-      </article>
-    `;
-  }).join('');
-}
-
-function renderInsights() {
-  document.getElementById('insightGrid').innerHTML = insights.map((i, idx) => `
-    <article class="insight-card">
-      <div class="insight-image">${i.category}</div>
-      <span class="badge">${i.category}</span>
-      <h3>${i.title}</h3>
-      <p class="muted small">${i.author} &middot; ${i.date}</p>
-      <p>${i.summary}</p>
-      <div class="tags">${i.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-      <p class="insight-body" id="insight-body-${idx}" hidden>${i.body}</p>
-      <button type="button" class="read-more" data-target="insight-body-${idx}">Read preview &rarr;</button>
-    </article>
+  document.getElementById('ecosystemGrid').innerHTML = ecosystem.map(e => `
+    <article class="ecosystem-card"><h3>${e.category}</h3><ul>${e.items.map(i => `<li>${i}</li>`).join('')}</ul></article>
   `).join('');
-
-  document.querySelectorAll('.read-more').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = document.getElementById(btn.dataset.target);
-      const isHidden = target.hasAttribute('hidden');
-      target.toggleAttribute('hidden');
-      btn.textContent = isHidden ? 'Show less \u2191' : 'Read preview \u2192';
-    });
-  });
 }
-
+function renderInsights() {
+  document.getElementById('insightGrid').innerHTML = insights.map(i => `
+    <article class="insight-card"><span class="badge">${i.category}</span><h3>${i.title}</h3><p>${i.summary}</p><a href="#" class="read-more">Read preview →</a></article>
+  `).join('');
+}
 function renderEvents() {
   document.getElementById('eventList').innerHTML = events.map(e => `
-    <article class="event-card">
-      <div class="event-date">${e.date}<br><span class="event-time">${e.time}</span></div>
-      <div>
-        <h3>${e.name}</h3>
-        <p class="muted">${e.organizer} &bull; ${e.venue}</p>
-        <p class="muted small">${e.description}</p>
-      </div>
-      <div class="event-side">
-        <span class="badge event-type">${e.type}</span>
-        <a href="${e.registrationLink}" class="button secondary small">Register</a>
-      </div>
-    </article>
+    <article class="event-card"><div class="event-date">${e.date}</div><div><h3>${e.name}</h3><p class="muted">${e.organizer} • ${e.location}</p></div><span class="badge event-type">${e.type}</span></article>
   `).join('');
 }
-
+ 
 function setupTabs() {
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -275,4 +235,4 @@ setupTabs();
 handleForms();
 updateSubmissionLog();
 setupMobileNav();
-[searchInput, sectorFilter, stageFilter].forEach(el => el.addEventListener('input', renderStartups));
+[searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', renderStartups));

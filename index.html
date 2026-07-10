@@ -85,6 +85,7 @@
           <input type="search" id="searchInput" placeholder="Search startups, sectors, or support needs..." />
           <select id="sectorFilter" aria-label="Filter by sector"><option value="all">All sectors</option></select>
           <select id="stageFilter" aria-label="Filter by stage"><option value="all">All stages</option></select>
+          <select id="supportFilter" aria-label="Filter by support needed"><option value="all">All support needs</option></select>
         </div>
         <div class="startup-count" id="startupCount"></div>
         <div class="card-grid" id="startupGrid"></div>
@@ -168,9 +169,7 @@
             <label>Founder name<input required name="founderName" placeholder="Founder name" /></label>
             <label>Email<input required type="email" name="email" placeholder="founder@email.com" /></label>
             <label>Sector<input name="sector" placeholder="Fintech, EdTech, HealthTech..." /></label>
-            <label>Website / social<input name="website" placeholder="yourstartup.com or @handle" /></label>
             <label>Short description<textarea required name="description" placeholder="What does your startup do?"></textarea></label>
-            <label>Support needed<textarea name="support" placeholder="What kind of support are you looking for?"></textarea></label>
             <button class="button primary" type="submit">Submit Startup</button>
           </form>
 
@@ -178,7 +177,6 @@
             <label>Organization<input required name="organization" placeholder="Company / institution" /></label>
             <label>Contact person<input required name="contactPerson" placeholder="Name" /></label>
             <label>Email<input required type="email" name="email" placeholder="name@company.com" /></label>
-            <label>Phone / Telegram<input name="phone" placeholder="+855 or @telegram_handle" /></label>
             <label>Interest<select name="interest"><option>Founding Partner</option><option>Event Partner</option><option>Media Partner</option><option>Data / Research Partner</option></select></label>
             <label>Message<textarea name="message" placeholder="Tell us what you are interested in."></textarea></label>
             <button class="button primary" type="submit">Request Discussion</button>
