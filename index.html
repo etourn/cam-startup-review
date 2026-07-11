@@ -94,12 +94,21 @@
 
     <section class="section light" id="ecosystem">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Ecosystem map</p>
-          <h2>Who makes the ecosystem work?</h2>
-          <p class="muted">A simple categorized map for the MVP. The next version can become a searchable ecosystem database.</p>
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Ecosystem map</p>
+            <h2>Who makes the ecosystem work?</h2>
+            <p class="muted">A categorized map of Cambodia's startup ecosystem actors, for the MVP. The next version can become a searchable, self-updating ecosystem database.</p>
+          </div>
+          <span class="badge">Sample data</span>
         </div>
-        <div class="ecosystem-grid" id="ecosystemGrid"></div>
+        <input type="search" id="ecosystemSearch" placeholder="Search organizations or roles..." style="margin-bottom:20px" />
+        <div class="ecosystem-chart-wrap">
+          <div class="ecosystem-chart-col" id="ecosystemChart"></div>
+          <div class="ecosystem-detail" id="ecosystemDetail">
+            <p class="muted">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -118,9 +127,12 @@
 
     <section class="section light" id="events">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Events calendar</p>
-          <h2>Upcoming ecosystem activities</h2>
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Events calendar</p>
+            <h2>Upcoming ecosystem activities</h2>
+          </div>
+          <span class="badge">Sample data</span>
         </div>
         <div class="event-list" id="eventList"></div>
       </div>

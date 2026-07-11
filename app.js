@@ -1,8 +1,3 @@
-/* ============================================================
-   CSR data model
-   Matches the approved Day 1 data model. Sample/demo data only.
-   ============================================================ */
-
 const startups = [
   { name: 'Wonder Ventures', sector: 'Tourism', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Flexible, meaningful travel experiences connecting visitors with local communities and sustainable destinations.', support: 'B2B partners, hotels, guides, restaurants, and marketing strategy mentors.', supportTag: 'Partnerships', funding: 'Bootstrapped', website: 'wonderventures.kh (demo)' },
   { name: 'Zoneer', sector: 'PropTech', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Digital property management platform replacing paper notes, Excel sheets, and scattered messaging.', support: 'Law firms, insurance partners, mentors, and investment partners.', supportTag: 'Investment', funding: 'Pre-seed raised', website: 'zoneer.kh (demo)' },
@@ -16,30 +11,60 @@ const startups = [
   { name: 'PayNear', sector: 'FinTech', stage: 'Pilot', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Mobile micro-payment platform for informal market vendors without bank accounts.', support: 'Banking partners, regulatory advisors, and seed investors.', supportTag: 'Investment', funding: 'Raising pre-seed', website: 'paynear.kh (demo)' },
   { name: 'StaffLoop', sector: 'HRTech', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Shift-based hiring platform connecting hospitality businesses with verified part-time workers.', support: 'Hospitality partners, verification agencies, and recruiters.', supportTag: 'Talent & hiring', funding: 'Bootstrapped', website: 'staffloop.kh (demo)' }
 ];
- 
+
 const ecosystem = [
-  { category: 'Startups', items: ['Digital services', 'Tourism', 'HealthTech', 'AgriTech'] },
-  { category: 'Investors', items: ['Angel investors', 'VCs', 'Corporate venture teams'] },
-  { category: 'Incubators & Accelerators', items: ['University programs', 'Corporate accelerators', 'Startup hubs'] },
-  { category: 'Universities', items: ['Entrepreneurship centers', 'STEM departments', 'Career offices'] },
-  { category: 'Government Actors', items: ['Digital economy bodies', 'Startup support programs', 'Skills agencies'] },
-  { category: 'Corporate Innovation', items: ['Telecoms', 'Banks', 'Technology firms'] },
-  { category: 'Development Partners', items: ['Donors', 'NGOs', 'International agencies'] },
-  { category: 'Media & Events', items: ['Startup media', 'Demo days', 'Pitch events'] }
+  { category: 'Startups', linkOut: true, note: 'All profiled startups appear in the full directory above.' },
+  { category: 'Investors', actors: [
+    { name: 'Mekong Angel Network', role: 'Angel investor network', website: 'mekongangels.kh (demo)' },
+    { name: 'Khmer Ventures Capital', role: 'Early-stage VC fund', website: 'khmerventures.kh (demo)' },
+    { name: 'Emerging Markets Innovation Fund', role: 'Corporate venture arm', website: 'emif.kh (demo)' }
+  ]},
+  { category: 'Incubators & Accelerators', actors: [
+    { name: 'TechoStartup Center', role: 'National incubator program', website: 'techostartup.gov.kh (demo)' },
+    { name: 'Impact Hub Phnom Penh', role: 'Accelerator & startup programs', website: 'impacthub.kh (demo)' },
+    { name: 'Smart Axiata Digital Accelerator', role: 'Corporate accelerator', website: 'smart.com.kh (demo)' }
+  ]},
+  { category: 'Universities', actors: [
+    { name: 'Royal University of Phnom Penh', role: 'Entrepreneurship center', website: 'rupp.edu.kh (demo)' },
+    { name: 'Institute of Technology of Cambodia', role: 'STEM & engineering programs', website: 'itc.edu.kh (demo)' },
+    { name: 'CamEd Business School', role: 'Career & startup readiness office', website: 'cam-ed.com (demo)' }
+  ]},
+  { category: 'Government Actors', actors: [
+    { name: 'Ministry of Economy and Finance', role: 'Digital economy policy body', website: 'mef.gov.kh (demo)' },
+    { name: 'National Council for Science, Technology & Innovation', role: 'Innovation & STI strategy', website: 'ncsti.gov.kh (demo)' },
+    { name: 'General Department of Digital Economy', role: 'Startup support programs', website: 'dtc.gov.kh (demo)' }
+  ]},
+  { category: 'Corporate Innovation', actors: [
+    { name: 'ABA Bank Innovation Lab', role: 'Banking innovation partner', website: 'ababank.com (demo)' },
+    { name: 'Smart Axiata', role: 'Telecom innovation partner', website: 'smart.com.kh (demo)' },
+    { name: 'Wing Bank', role: 'Fintech corporate partner', website: 'wingbank.com.kh (demo)' }
+  ]},
+  { category: 'Development Partners', actors: [
+    { name: 'UNDP Cambodia', role: 'Innovation & SDG programs', website: 'undp.org/cambodia (demo)' },
+    { name: 'GIZ Cambodia', role: 'Private sector development', website: 'giz.de (demo)' },
+    { name: 'The Asia Foundation', role: 'Entrepreneurship ecosystem grants', website: 'asiafoundation.org (demo)' }
+  ]},
+  { category: 'Co-working Spaces', actors: [
+    { name: 'The Desk Cowork', role: 'Coworking & community space', website: 'thedesk.asia (demo)' },
+    { name: 'Emerald Hub', role: 'Coworking & event venue', website: 'emeraldhub.kh (demo)' }
+  ]},
+  { category: 'Media & Events', actors: [
+    { name: 'Cambodia Startup Review', role: 'Ecosystem media & demo days', website: 'csr.toptimize.kh (demo)' },
+    { name: 'Techo Startup Demo Day', role: 'Annual pitch competition', website: 'techostartup.gov.kh (demo)' }
+  ]}
 ];
- 
+
 const insights = [
   { title: 'Why Cambodia Needs a Startup Intelligence Platform', category: 'Ecosystem Analysis', summary: 'A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.' },
   { title: 'Founder Story: Building for Local Problems', category: 'Founder Story', summary: 'How Cambodian founders are turning practical challenges into startup opportunities.' },
   { title: 'What Sponsors Want from Startup Ecosystem Platforms', category: 'Sponsor Insight', summary: 'Visibility, credibility, ESG alignment, and curated access to innovation pipelines.' }
 ];
- 
-const events = [
-  { date: 'Mar 2026', name: 'CSR Founding Partner Roundtable', organizer: 'Toptimize', type: 'Roundtable', location: 'Phnom Penh' },
-  { date: 'Apr 2026', name: 'Cambodia Startup Mapping Sprint', organizer: 'CSR', type: 'Workshop', location: 'Hybrid' },
-  { date: 'May 2026', name: 'Founder Visibility Demo Night', organizer: 'CSR Partners', type: 'Demo Day', location: 'Phnom Penh' }
-];
 
+const events = [
+  { date: 'Mar 14, 2026', time: '2:00 PM', name: 'CSR Founding Partner Roundtable', organizer: 'Toptimize', type: 'Roundtable', venue: 'Phnom Penh (in person)', description: 'A closed-door session introducing CSR to prospective Founding Partners and gathering early feedback on the sponsorship model.', registrationLink: '#partners' },
+  { date: 'Apr 9, 2026', time: '9:00 AM', name: 'Cambodia Startup Mapping Sprint', organizer: 'CSR', type: 'Workshop', venue: 'Hybrid', description: 'A working session with ecosystem actors to validate and expand the startup and ecosystem actor database.', registrationLink: '#submit' },
+  { date: 'May 22, 2026', time: '6:00 PM', name: 'Founder Visibility Demo Night', organizer: 'CSR Partners', type: 'Demo Day', venue: 'Phnom Penh (in person)', description: 'Selected startups pitch to investors and corporate partners, with CSR profiling each founder story afterward.', registrationLink: '#submit' }
+];
 
 /* ============================================================
    Google Forms configuration
@@ -94,17 +119,13 @@ const GOOGLE_FORMS_CONFIG = {
   }
 };
 
-/* ============================================================
-   DOM references
-   ============================================================ */
-
 const startupGrid = document.getElementById('startupGrid');
 const searchInput = document.getElementById('searchInput');
 const sectorFilter = document.getElementById('sectorFilter');
 const stageFilter = document.getElementById('stageFilter');
 const supportFilter = document.getElementById('supportFilter');
 const startupCount = document.getElementById('startupCount');
- 
+
 function uniqueValues(key) { return [...new Set(startups.map(s => s[key]))].sort(); }
 function populateFilters() {
   uniqueValues('sector').forEach(v => sectorFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
@@ -145,11 +166,95 @@ function renderStartups() {
     </article>
   `).join('');
 }
- 
+
+const donutColors = ['#0f172a', '#1e3a8a', '#1d4ed8', '#0891b2', '#0d9488', '#f59e0b', '#d97706', '#92400e', '#64748b'];
+
+function getEcosystemSlices() {
+  return ecosystem.map(e => e.linkOut
+    ? { category: e.category, count: startups.length, type: 'startups' }
+    : { category: e.category, count: e.actors.length, type: 'actors', actors: e.actors }
+  );
+}
+
+function buildBigDonut(slices) {
+  const size = 260, stroke = 34;
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const cx = size / 2, cy = size / 2;
+  const total = slices.reduce((sum, s) => sum + s.count, 0);
+  let offset = 0;
+  const circles = slices.map((s, i) => {
+    const seg = (s.count / total) * c;
+    const color = donutColors[i % donutColors.length];
+    const dashoffset = -offset;
+    offset += seg;
+    return `<circle class="donut-seg" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}"
+      stroke-dasharray="${Math.max(seg - 3, 1)} ${c}" stroke-dashoffset="${dashoffset}"
+      data-index="${i}" data-category="${s.category}" data-count="${s.count}"></circle>`;
+  }).join('');
+  return `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" class="donut big">
+    <g transform="rotate(-90 ${cx} ${cy})">${circles}</g>
+    <text x="${cx}" y="${cy - 10}" text-anchor="middle" dominant-baseline="central" class="donut-label">${total}</text>
+    <text x="${cx}" y="${cy + 16}" text-anchor="middle" dominant-baseline="central" class="donut-sublabel">organizations mapped</text>
+  </svg>`;
+}
+
+function renderEcosystemDetail(slice) {
+  const panel = document.getElementById('ecosystemDetail');
+  const entries = slice.type === 'startups'
+    ? startups.map(s => ({ name: s.name, role: `${s.sector} · ${s.stage}`, website: s.website }))
+    : slice.actors;
+  panel.innerHTML = `
+    <div class="detail-header"><h3>${slice.category}</h3><span class="badge">${slice.count} org${slice.count === 1 ? '' : 's'}</span></div>
+    <div class="detail-list">
+      ${entries.map(a => `
+        <div class="actor-item">
+          <div class="actor-name">${a.name}</div>
+          <div class="muted small">${a.role}</div>
+          <div class="card-link small">${a.website}</div>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function renderEcosystemSearchResults(term) {
+  const panel = document.getElementById('ecosystemDetail');
+  const slices = getEcosystemSlices();
+  const matches = [];
+  slices.forEach(s => {
+    const entries = s.type === 'startups'
+      ? startups.map(st => ({ name: st.name, role: `${st.sector} · ${st.stage}`, website: st.website }))
+      : s.actors;
+    entries.filter(a => [a.name, a.role].join(' ').toLowerCase().includes(term))
+      .forEach(a => matches.push({ ...a, category: s.category }));
+  });
+  if (!matches.length) {
+    panel.innerHTML = `<div class="empty-state">No organizations match "${term}".</div>`;
+    return;
+  }
+  panel.innerHTML = `
+    <div class="detail-header"><h3>Search results</h3><span class="badge">${matches.length} match${matches.length === 1 ? '' : 'es'}</span></div>
+    <div class="detail-list">
+      ${matches.map(a => `
+        <div class="actor-item">
+          <div class="actor-name">${a.name} <span class="muted small">— ${a.category}</span></div>
+          <div class="muted small">${a.role}</div>
+          <div class="card-link small">${a.website}</div>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
 function renderEcosystem() {
-  document.getElementById('ecosystemGrid').innerHTML = ecosystem.map(e => `
-    <article class="ecosystem-card"><h3>${e.category}</h3><ul>${e.items.map(i => `<li>${i}</li>`).join('')}</ul></article>
-  `).join('');
+  const term = (document.getElementById('ecosystemSearch')?.value || '').toLowerCase();
+  const chartCol = document.getElementById('ecosystemChart');
+  const slices = getEcosystemSlices();
+  chartCol.innerHTML = buildBigDonut(slices);
+  if (term) {
+    renderEcosystemSearchResults(term);
+  } else {
+    document.getElementById('ecosystemDetail').innerHTML = `<p class="muted">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>`;
+  }
 }
 function renderInsights() {
   document.getElementById('insightGrid').innerHTML = insights.map(i => `
@@ -158,10 +263,19 @@ function renderInsights() {
 }
 function renderEvents() {
   document.getElementById('eventList').innerHTML = events.map(e => `
-    <article class="event-card"><div class="event-date">${e.date}</div><div><h3>${e.name}</h3><p class="muted">${e.organizer} • ${e.location}</p></div><span class="badge event-type">${e.type}</span></article>
+    <article class="event-card">
+      <div class="event-date">${e.date}<div class="muted small">${e.time}</div></div>
+      <div>
+        <div class="tags"><span class="badge event-type">${e.type}</span></div>
+        <h3>${e.name}</h3>
+        <p class="muted small">${e.organizer} • ${e.venue}</p>
+        <p>${e.description}</p>
+      </div>
+      <a class="button secondary small" href="${e.registrationLink}">Register interest</a>
+    </article>
   `).join('');
 }
- 
+
 function setupTabs() {
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -172,53 +286,61 @@ function setupTabs() {
     });
   });
 }
-
-/* ============================================================
-   Form handling: submit silently to Google Forms, log locally
-   for on-page confirmation only (not as the system of record).
-   ============================================================ */
-
-function submitToGoogleForm(formKey, data) {
-  const config = GOOGLE_FORMS_CONFIG[formKey];
-  if (!config) return Promise.resolve();
-
-  const body = new FormData();
-  Object.entries(config.fields).forEach(([localName, entryId]) => {
-    if (data[localName] !== undefined) {
-      body.append(entryId, data[localName]);
-    }
-  });
-
-  // no-cors: Google Forms doesn't return a readable response, this is
-  // the standard pattern for posting to formResponse from another origin.
-  return fetch(config.actionUrl, { method: 'POST', mode: 'no-cors', body })
-    .catch(err => console.error('Google Form submission failed:', err));
-}
-
 function handleForms() {
   document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', async e => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      const type = form.id.replace('Form', '');
+      const type = form.id.replace('Form','');
       const data = Object.fromEntries(new FormData(form).entries());
-
-      await submitToGoogleForm(form.id, data);
-
       const submissions = JSON.parse(localStorage.getItem('csrSubmissions') || '[]');
-      submissions.unshift({ type, date: new Date().toLocaleString() });
+      submissions.unshift({ type, data, date: new Date().toLocaleString() });
       localStorage.setItem('csrSubmissions', JSON.stringify(submissions.slice(0, 6)));
       form.reset();
       updateSubmissionLog();
-      alert('Thank you. Your submission has been sent.');
+      alert('Thank you. This prototype captured your submission locally for testing.');
     });
   });
 }
-
 function updateSubmissionLog() {
   const submissions = JSON.parse(localStorage.getItem('csrSubmissions') || '[]');
   const log = document.getElementById('submissionLog');
-  if (!submissions.length) { log.innerHTML = '<p class="muted">No submissions yet this session.</p>'; return; }
-  log.innerHTML = submissions.map(s => `<div class="log-item">${s.type} submission sent &bull; ${s.date}</div>`).join('');
+  if (!submissions.length) { log.innerHTML = '<p class="muted">No prototype submissions yet.</p>'; return; }
+  log.innerHTML = submissions.map(s => `<div class="log-item">${s.type} submission captured • ${s.date}</div>`).join('');
+}
+function setupEcosystemTooltip() {
+  const tooltip = document.createElement('div');
+  tooltip.id = 'ecoTooltip';
+  tooltip.className = 'eco-tooltip';
+  document.body.appendChild(tooltip);
+  const chartCol = document.getElementById('ecosystemChart');
+
+  function showTooltip(seg, x, y) {
+    tooltip.innerHTML = `<strong>${seg.dataset.category}</strong><span>${seg.dataset.count} organization${seg.dataset.count === '1' ? '' : 's'}</span><span class="tooltip-link">Click to see full details</span>`;
+    tooltip.style.left = `${x + 16}px`;
+    tooltip.style.top = `${y + 16}px`;
+    tooltip.classList.add('visible');
+  }
+  function hideTooltip() { tooltip.classList.remove('visible'); }
+
+  chartCol.addEventListener('mouseover', e => {
+    const seg = e.target.closest('.donut-seg');
+    if (seg) showTooltip(seg, e.clientX, e.clientY);
+  });
+  chartCol.addEventListener('mousemove', e => {
+    const seg = e.target.closest('.donut-seg');
+    if (seg) { tooltip.style.left = `${e.clientX + 16}px`; tooltip.style.top = `${e.clientY + 16}px`; }
+  });
+  chartCol.addEventListener('mouseout', e => {
+    if (e.target.closest('.donut-seg')) hideTooltip();
+  });
+  chartCol.addEventListener('click', e => {
+    const seg = e.target.closest('.donut-seg');
+    if (!seg) return;
+    const slices = getEcosystemSlices();
+    const slice = slices[Number(seg.dataset.index)];
+    if (slice) renderEcosystemDetail(slice);
+    hideTooltip();
+  });
 }
 
 function setupMobileNav() {
@@ -235,4 +357,6 @@ setupTabs();
 handleForms();
 updateSubmissionLog();
 setupMobileNav();
+setupEcosystemTooltip();
 [searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', renderStartups));
+document.getElementById('ecosystemSearch').addEventListener('input', renderEcosystem);
