@@ -55,9 +55,48 @@ const ecosystem = [
 ];
 
 const insights = [
-  { title: 'Why Cambodia Needs a Startup Intelligence Platform', category: 'Ecosystem Analysis', summary: 'A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.' },
-  { title: 'Founder Story: Building for Local Problems', category: 'Founder Story', summary: 'How Cambodian founders are turning practical challenges into startup opportunities.' },
-  { title: 'What Sponsors Want from Startup Ecosystem Platforms', category: 'Sponsor Insight', summary: 'Visibility, credibility, ESG alignment, and curated access to innovation pipelines.' }
+  {
+    title: 'Why Cambodia Needs a Startup Intelligence Platform',
+    category: 'Ecosystem Analysis',
+    author: 'CSR Editorial Team',
+    date: 'Feb 18, 2026',
+    readTime: '4 min read',
+    tags: ['Ecosystem', 'Visibility'],
+    summary: 'A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.',
+    body: [
+      'Cambodia\u2019s startup ecosystem has grown quickly over the last few years, but most of what happens inside it is still tracked informally \u2014 through personal networks, scattered social posts, and word of mouth rather than any shared source of record.',
+      'That makes it hard for founders to get discovered, hard for sponsors and investors to see the full picture, and hard for the ecosystem to tell its own story to a regional or global audience.',
+      'A neutral, non-political platform that simply maps who exists and what is happening \u2014 without picking winners \u2014 can close that visibility gap for everyone at once.'
+    ]
+  },
+  {
+    title: 'Founder Story: Building for Local Problems',
+    category: 'Founder Story',
+    author: 'Sample Contributor',
+    date: 'Mar 2, 2026',
+    readTime: '3 min read',
+    tags: ['Founder Story', 'Local Innovation'],
+    summary: 'How Cambodian founders are turning practical challenges into startup opportunities.',
+    body: [
+      'Some of the most resilient Cambodian startups did not start from a pitch deck \u2014 they started from an everyday problem the founder ran into personally, whether that was managing a family shop, farming poultry, or finding shift work in hospitality.',
+      'Building for a genuinely local problem, in the local context, often means a longer runway before the business looks "investable" by outside standards \u2014 but it also means the product fits the market from day one.',
+      'This is a placeholder founder story for prototype testing. In production, this space would carry a real, permissioned founder interview.'
+    ]
+  },
+  {
+    title: 'What Sponsors Want from Startup Ecosystem Platforms',
+    category: 'Sponsor Insight',
+    author: 'CSR Editorial Team',
+    date: 'Mar 20, 2026',
+    readTime: '5 min read',
+    tags: ['Sponsor Insight', 'ESG'],
+    summary: 'Visibility, credibility, ESG alignment, and curated access to innovation pipelines.',
+    body: [
+      'When corporates and development partners evaluate ecosystem sponsorships, they are usually weighing four things: credible visibility, alignment with ESG or CSR goals, early access to a pipeline of founders, and confidence that the platform will stay editorially independent.',
+      'That last point is often the deciding factor \u2014 sponsors want their name next to something trusted, which means the platform cannot let sponsorship influence rankings or coverage.',
+      'CSR is designed around that separation from day one: sponsorship funds the platform\u2019s operations, but it never determines who gets covered or how.'
+    ]
+  }
 ];
 
 const events = [
@@ -256,10 +295,88 @@ function renderEcosystem() {
     document.getElementById('ecosystemDetail').innerHTML = `<p class="muted">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>`;
   }
 }
+const insightTints = [
+  ['#0f172a', '#1e3a8a'],
+  ['#1d4ed8', '#0891b2'],
+  ['#0d9488', '#0f172a'],
+  ['#92400e', '#f59e0b']
+];
+
 function renderInsights() {
-  document.getElementById('insightGrid').innerHTML = insights.map(i => `
-    <article class="insight-card"><span class="badge">${i.category}</span><h3>${i.title}</h3><p>${i.summary}</p><a href="#" class="read-more">Read preview →</a></article>
-  `).join('');
+  const [featured, ...rest] = insights;
+  const featuredEl = document.getElementById('insightFeatured');
+  if (featured) {
+    const idx = 0;
+    featuredEl.innerHTML = `
+      <div class="insight-featured-media" style="--tint1:${insightTints[idx % insightTints.length][0]};--tint2:${insightTints[idx % insightTints.length][1]}">
+        <span class="featured-tag">Recent post</span>
+      </div>
+      <div class="insight-featured-content">
+        <div class="insight-meta"><span class="badge">${featured.category}</span><span class="muted small">${featured.date} • ${featured.readTime}</span></div>
+        <h3>${featured.title}</h3>
+        <p>${featured.summary}</p>
+        <div class="tags">${featured.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="insight-footer">
+          <span class="muted small">By ${featured.author}</span>
+          <button type="button" class="read-more" data-insight="0">Read preview →</button>
+        </div>
+      </div>`;
+  }
+
+  // Only 3 demo articles exist right now, so this renders as a single
+  // page with no pagination controls rather than faking extra pages of
+  // duplicate content to match a template. Add pagination here once
+  // there's enough real content to justify it.
+  document.getElementById('insightGrid').innerHTML = rest.map((i, gridIdx) => {
+    const realIdx = gridIdx + 1;
+    const tint = insightTints[realIdx % insightTints.length];
+    return `
+    <article class="insight-card">
+      <div class="insight-thumb" style="--tint1:${tint[0]};--tint2:${tint[1]}"><span>${i.category}</span></div>
+      <div class="insight-card-body">
+        <div class="insight-meta"><span class="muted small">${i.date} • ${i.readTime}</span></div>
+        <h3>${i.title}</h3>
+        <p>${i.summary}</p>
+        <div class="tags">${i.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="insight-footer">
+          <span class="muted small">By ${i.author}</span>
+          <button type="button" class="read-more" data-insight="${realIdx}">Read preview →</button>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function openInsightModal(idx) {
+  const i = insights[idx];
+  if (!i) return;
+  const overlay = document.getElementById('insightModalOverlay');
+  const modal = document.getElementById('insightModal');
+  modal.innerHTML = `
+    <button type="button" class="modal-close" id="insightModalClose" aria-label="Close preview">✕</button>
+    <div class="modal-meta"><span class="badge">${i.category}</span><span class="muted small">${i.date}</span><span class="muted small">By ${i.author}</span></div>
+    <h3>${i.title}</h3>
+    <div class="modal-body">${i.body.map(p => `<p>${p}</p>`).join('')}</div>
+    <div class="tags modal-tags">${i.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    <p class="muted small modal-demo-note">Sample content for prototype desirability testing — not a published article.</p>
+  `;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.getElementById('insightModalClose').addEventListener('click', closeInsightModal);
+}
+function closeInsightModal() {
+  const overlay = document.getElementById('insightModalOverlay');
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+}
+function setupInsightModal() {
+  document.getElementById('insights').addEventListener('click', e => {
+    const btn = e.target.closest('.read-more');
+    if (btn) openInsightModal(Number(btn.dataset.insight));
+  });
+  const overlay = document.getElementById('insightModalOverlay');
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeInsightModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeInsightModal(); });
 }
 function renderEvents() {
   document.getElementById('eventList').innerHTML = events.map(e => `
@@ -348,15 +465,40 @@ function setupMobileNav() {
   document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')));
 }
 
+// Any CTA with data-tab-link jumps to the Get Involved section AND opens
+// the matching form tab, so a "Request Partnership Discussion" button
+// actually lands on a visible, active Partner Inquiry form instead of a
+// hidden .form-panel.
+function setupTabLinks() {
+  document.querySelectorAll('[data-tab-link]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const btn = document.querySelector(`.tab-btn[data-tab="${link.dataset.tabLink}"]`);
+      if (btn) btn.click();
+      document.getElementById('submit').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
+
+// Keep the hero "sample profiles" metric honest as the sample data set grows,
+// instead of a hardcoded number that can silently drift out of sync.
+function renderHeroMetrics() {
+  const el = document.getElementById('heroStartupCount');
+  if (el) el.textContent = startups.length;
+}
+
 populateFilters();
 renderStartups();
 renderEcosystem();
 renderInsights();
 renderEvents();
+renderHeroMetrics();
 setupTabs();
 handleForms();
 updateSubmissionLog();
 setupMobileNav();
 setupEcosystemTooltip();
+setupInsightModal();
+setupTabLinks();
 [searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', renderStartups));
 document.getElementById('ecosystemSearch').addEventListener('input', renderEcosystem);

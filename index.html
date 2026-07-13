@@ -28,24 +28,28 @@
   <main id="home">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <p class="eyebrow">Neutral startup intelligence platform</p>
-          <h1>Mapping Cambodia’s Startup & Innovation Ecosystem</h1>
+          <h1>Mapping Cambodia’s <span class="accent">Startup &amp; Innovation</span> Ecosystem</h1>
           <p class="hero-subtitle">Cambodia Startup Review curates startup profiles, ecosystem insights, founder stories, and partner opportunities to strengthen Cambodia’s innovation visibility locally and globally.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#partners">Become a Founding Partner</a>
+            <a class="button primary" href="#partners">Become a Founding Partner <span class="btn-arrow">›</span></a>
             <a class="button secondary" href="#submit">Submit Your Startup</a>
           </div>
+          <a class="hero-cue" href="#directory">
+          </a>
           <p class="microcopy">Demo prototype operated by Toptimize Co., Ltd. for desirability testing.</p>
         </div>
-        <div class="hero-card" aria-label="CSR impact preview">
-          <div class="metric-row"><span>17</span><p>sample startup profiles</p></div>
-          <div class="metric-row"><span>8</span><p>ecosystem categories</p></div>
-          <div class="metric-row"><span>3</span><p>founding partner slots</p></div>
-          <div class="map-box">
-            <div class="dot dot-a"></div><div class="dot dot-b"></div><div class="dot dot-c"></div>
-            <p>Cambodia ecosystem visibility layer</p>
-          </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="cluster-circle bg-circle bg-1"></div>
+          <div class="cluster-circle bg-circle bg-2"></div>
+          <div class="cluster-circle c-pill"><span>Startups</span></div>
+          <div class="cluster-circle c1"><span>Investors</span></div>
+          <div class="cluster-circle c2"><span>Incubators &amp; Accelerators</span></div>
+          <div class="cluster-circle c3"><span>Government</span></div>
+          <div class="cluster-circle c4"><span>Corporate Innovation</span></div>
+          <div class="floating-pill pill-a">8 ecosystem categories</div>
+          <div class="floating-pill pill-b">3 founding partner slots</div>
         </div>
       </div>
     </section>
@@ -121,6 +125,8 @@
           </div>
           <span class="badge">Sample content</span>
         </div>
+        <div class="insight-featured" id="insightFeatured"></div>
+        <h3 class="insight-subheading">More insights</h3>
         <div class="card-grid three" id="insightGrid"></div>
       </div>
     </section>
@@ -139,24 +145,53 @@
     </section>
 
     <section class="section sponsor" id="partners">
-      <div class="container sponsor-grid">
-        <div>
-          <p class="eyebrow">Founding partner opportunity</p>
-          <h2>Support Cambodia’s innovation narrative from day one</h2>
-          <p>We are inviting a limited number of organizations to become Founding Partners of CSR and help build a neutral, credible platform for startup visibility and ecosystem intelligence.</p>
-          <ul class="check-list">
-            <li>Founding Partner recognition on CSR homepage</li>
-            <li>Visibility in Cambodia Startup Review Report</li>
-            <li>Co-branded invite-only ecosystem roundtable</li>
-            <li>Early association before regional expansion</li>
-            <li>Clear sponsor/editorial separation</li>
-          </ul>
+      <div class="container">
+        <div class="sponsor-intro">
+          <p class="eyebrow center">Founding partner opportunity</p>
+          <h2 class="center">Support Cambodia’s innovation narrative from day one</h2>
+          <p class="center">We are inviting a limited number of organizations to become Founding Partners of CSR — helping build a neutral, credible platform for startup visibility and ecosystem intelligence, while getting early visibility into Cambodia’s innovation pipeline before it goes regional.</p>
         </div>
-        <div class="offer-card">
-          <p class="eyebrow">Founding Partner Package</p>
-          <h3>USD 6,000 / year</h3>
-          <p>Limited to first 3 partners during MVP validation.</p>
-          <a class="button primary full" href="#partnerForm">Request Partnership Discussion</a>
+
+        <div class="sponsor-grid-main">
+          <div class="sponsor-benefits">
+            <h3>What Founding Partners get</h3>
+            <div class="benefit-grid">
+              <div class="benefit-card">
+                <h4>Brand visibility</h4>
+                <p>Founding Partner recognition on the CSR homepage and in the Cambodia Startup Review Report.</p>
+              </div>
+              <div class="benefit-card">
+                <h4>Ecosystem access</h4>
+                <p>A seat at a co-branded, invite-only ecosystem roundtable with founders, investors, and partners.</p>
+              </div>
+              <div class="benefit-card">
+                <h4>Early positioning</h4>
+                <p>Founding-tier association with CSR before public launch and any future regional expansion.</p>
+              </div>
+              <div class="benefit-card">
+                <h4>Editorial integrity</h4>
+                <p>Clear separation between sponsorship and editorial content — your credibility stays protected.</p>
+              </div>
+            </div>
+          </div>
+          <div class="offer-card">
+            <p class="eyebrow">Founding Partner Package</p>
+            <h3>USD 6,000 / year</h3>
+            <p>Limited to the first 3 partners during MVP validation.</p>
+            <ul class="check-list">
+              <li>Founding Partner recognition on CSR homepage</li>
+              <li>Visibility in Cambodia Startup Review Report</li>
+              <li>Co-branded invite-only ecosystem roundtable</li>
+              <li>Early association before regional expansion</li>
+              <li>Clear sponsor/editorial separation</li>
+            </ul>
+            <a class="button primary full" href="#submit" data-tab-link="partnerForm">Request Partnership Discussion</a>
+          </div>
+        </div>
+
+        <div class="governance-box">
+          <p class="governance-label">Governance & integrity</p>
+          <p>CSR is neutral and non-political. It is not an association, not a government body, and not an investment fund. Sponsorship does not influence rankings or editorial integrity. Cambodia Startup Review is operated by Toptimize Co., Ltd.</p>
         </div>
       </div>
     </section>
@@ -221,6 +256,10 @@
       </div>
     </div>
   </footer>
+
+  <div class="modal-overlay" id="insightModalOverlay" aria-hidden="true">
+    <div class="modal" id="insightModal" role="dialog" aria-modal="true" aria-label="Insight preview"></div>
+  </div>
 
   <script src="app.js"></script>
 </body>
