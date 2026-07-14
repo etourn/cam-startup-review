@@ -405,16 +405,37 @@ function setupTabs() {
 }
 function handleForms() {
   document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const type = form.id.replace('Form','');
       const data = Object.fromEntries(new FormData(form).entries());
+
+      // Send to the matching Google Form, if configured.
+      const config = GOOGLE_FORMS_CONFIG[form.id];
+      if (config) {
+        const gBody = new URLSearchParams();
+        Object.entries(config.fields).forEach(([localKey, entryId]) => {
+          if (data[localKey] !== undefined) gBody.append(entryId, data[localKey]);
+        });
+        try {
+          // Google Forms' formResponse endpoint doesn't send CORS headers,
+          // so the browser can't read the response — mode: 'no-cors' is
+          // expected here and the request still lands in the Sheet.
+          await fetch(config.actionUrl, { method: 'POST', mode: 'no-cors', body: gBody });
+        } catch (err) {
+          console.error('Google Forms submission failed:', err);
+        }
+      } else {
+        console.warn(`No GOOGLE_FORMS_CONFIG entry for form id "${form.id}" — submission was only saved locally.`);
+      }
+
+      // Also keep a local log for demo/testing visibility in this prototype.
       const submissions = JSON.parse(localStorage.getItem('csrSubmissions') || '[]');
       submissions.unshift({ type, data, date: new Date().toLocaleString() });
       localStorage.setItem('csrSubmissions', JSON.stringify(submissions.slice(0, 6)));
       form.reset();
       updateSubmissionLog();
-      alert('Thank you. This prototype captured your submission locally for testing.');
+      alert('Thank you. Your submission has been sent.');
     });
   });
 }
