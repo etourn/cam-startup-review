@@ -162,14 +162,41 @@ textarea { min-height:110px; resize:vertical; }
 .event-date { font-weight:900; color:var(--blue); white-space:nowrap; }
 .event-type { align-self:start; }
 .sponsor { background:linear-gradient(135deg, #0f172a, #1e293b); color:white; }
-.sponsor h2, .sponsor h3 { color:white; }
-.sponsor p { color:#cbd5e1; }
+.sponsor h2, .sponsor h3 { color:white; font-family:'Source Serif 4', Georgia, serif; font-weight:700; }
+.sponsor p { color:#cbd5e1; font-family:'IBM Plex Sans', Inter, sans-serif; }
+.sponsor .eyebrow, .sponsor .button, .sponsor .badge, .sponsor li { font-family:'IBM Plex Sans', Inter, sans-serif; }
 .sponsor-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:32px; align-items:center; }
 .check-list { list-style:none; padding:0; margin:24px 0 0; }
 .check-list li { margin:10px 0; padding-left:28px; position:relative; }
-.check-list li:before { content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:900; }
+.check-list li:before { content:"◆"; position:absolute; left:0; top:.1em; color:var(--gold); font-weight:900; font-size:.62em; }
 .offer-card { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.16); }
 .offer-card h3 { font-size:2.4rem; color:var(--gold); }
+
+/* Registry-style numbering — .sponsor only */
+.sponsor .reg-number { font-family:'IBM Plex Mono', 'Courier New', monospace; color:var(--gold); font-weight:600; margin-right:10px; letter-spacing:.02em; }
+.benefit-card { position:relative; padding-top:34px; }
+.benefit-num { font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:.72rem; font-weight:600; color:rgba(245,158,11,.75); position:absolute; top:16px; left:18px; letter-spacing:.04em; }
+.benefit-card h4 { padding-top:2px; border-top:1px solid rgba(255,255,255,.14); padding-top:10px; margin-top:8px; }
+
+/* Founding Partner logo mosaic */
+.partner-mosaic { margin:0 0 40px; }
+.partner-mosaic-head { text-align:center; max-width:640px; margin:0 auto 30px; }
+.partner-mosaic-head h3 { font-size:1.6rem; margin:0 0 12px; }
+.partner-mosaic-head .badge { background:rgba(255,255,255,.08); color:#cbd5e1; border:1px solid rgba(255,255,255,.16); font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:.7rem; text-transform:none; letter-spacing:.02em; }
+.mosaic-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; max-width:900px; margin:0 auto; }
+.mosaic-tile { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:26px 20px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; box-shadow:0 16px 34px rgba(15,23,42,.28); transition:transform .2s ease, border-color .2s ease; }
+.mosaic-tile:hover { transform:translateY(-4px); border-color:rgba(245,158,11,.4); }
+.mosaic-tile.offset-b { transform:translateY(-14px); }
+.mosaic-tile.offset-b:hover { transform:translateY(-18px); }
+.mosaic-tile.offset-c { transform:translateY(8px); }
+.mosaic-tile.offset-c:hover { transform:translateY(4px); }
+.mosaic-mark { width:52px; height:52px; border-radius:14px; background:linear-gradient(160deg, var(--gold), #d97706); color:#111827; display:grid; place-items:center; font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:.95rem; letter-spacing:.02em; }
+.mosaic-name { font-family:'Source Serif 4', Georgia, serif; font-weight:700; color:white; font-size:1.02rem; }
+.mosaic-tag { font-family:'IBM Plex Mono', monospace; font-size:.7rem; letter-spacing:.05em; text-transform:uppercase; color:var(--gold); }
+.mosaic-tile.open { background:transparent; border:1.5px dashed rgba(255,255,255,.3); box-shadow:none; }
+.mosaic-tile.open .mosaic-mark { background:transparent; border:1.5px dashed rgba(245,158,11,.6); color:var(--gold); }
+.mosaic-tile.open .mosaic-name { color:#94a3b8; }
+.mosaic-tile.open .mosaic-tag { color:#94a3b8; }
 .form-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:34px; align-items:start; }
 .tab-buttons { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
 .tab-btn { border:1px solid var(--border); background:#f8fafc; padding:10px 12px; border-radius:999px; cursor:pointer; font-weight:800; }
@@ -195,8 +222,10 @@ label { display:grid; gap:6px; font-weight:800; color:#334155; }
   .ecosystem-chart-wrap { flex-direction:column; align-items:center; }
   .ecosystem-detail { width:100%; }
   .benefit-grid { grid-template-columns:1fr; }
+  .mosaic-grid { grid-template-columns:1fr; max-width:340px; }
+  .mosaic-tile, .mosaic-tile.offset-b, .mosaic-tile.offset-c { transform:none; }
+  .mosaic-tile:hover, .mosaic-tile.offset-b:hover, .mosaic-tile.offset-c:hover { transform:translateY(-3px); }
   .modal { padding:26px; }
   .insight-featured { grid-template-columns:1fr; }
   .hero-visual { margin:44px auto 26px; transform:scale(.82); }
 }
-
