@@ -11,13 +11,16 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
 body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
 }
+img, svg { max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
 .narrow { width: min(780px, calc(100% - 40px)); }
@@ -34,9 +37,12 @@ a { color: inherit; text-decoration: none; }
 .nav a { color:white; }
 .nav a:hover { color: var(--blue); }
 .nav-cta { background: var(--gold); color:var(--navy) !important; padding:10px 16px; border-radius:999px; }
-.mobile-menu { display:none; border:0; background:transparent; font-size:28px; }
+.mobile-menu { display:none; border:0; background:transparent; font-size:26px; color:white; width:44px; height:44px; align-items:center; justify-content:center; border-radius:10px; cursor:pointer; }
+.mobile-menu:active { background:rgba(255,255,255,.12); }
 .hero { background: radial-gradient(circle at 80% 10%, rgba(245,158,11,.20), transparent 30%), linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 88px 0; overflow:visible; }
 .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center; }
+.hero-visual-wrap { width:100%; max-width:420px; margin:0 auto; }
+.hero-visual-wrap svg { display:block; width:100%; height:auto; }
 .eyebrow { text-transform:uppercase; letter-spacing:.13em; color:var(--gold); font-size:.78rem; font-weight:900; margin:0 0 10px; }
 h1, h2, h3 { line-height:1.12; margin:0 0 16px; color:var(--navy); }
 .hero h1 { color:white; font-size: clamp(2.4rem, 5vw, 4.4rem); max-width:640px; font-size: 55px;}
@@ -254,9 +260,12 @@ label { display:grid; gap:6px; font-weight:800; color:#334155; }
 .footer-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
 .footer p { margin:6px 0 0; color:#94a3b8; }
 @media (max-width: 820px) {
-  .mobile-menu { display:block; }
-  .nav { position:absolute; top:72px; left:0; right:0; background:white; border-bottom:1px solid var(--border); padding:20px; flex-direction:column; align-items:flex-start; display:none; }
+  .mobile-menu { display:flex; }
+  .nav { position:absolute; top:72px; left:0; right:0; background:white; border-bottom:1px solid var(--border); padding:12px 20px 20px; flex-direction:column; align-items:stretch; gap:2px; display:none; box-shadow:0 16px 30px rgba(15,23,42,.18); max-height:calc(100vh - 72px); overflow-y:auto; }
   .nav.open { display:flex; }
+  .nav a { color:var(--text); padding:13px 4px; border-bottom:1px solid var(--border); width:100%; }
+  .nav a:last-child { border-bottom:0; }
+  .nav-cta { text-align:center; margin-top:6px; }
   .hero-grid, .sponsor-grid, .form-grid, .sponsor-grid-main { grid-template-columns:1fr; }
   .card-grid.three { grid-template-columns:1fr; }
   .about-grid { grid-template-columns:1fr; }
@@ -276,4 +285,30 @@ label { display:grid; gap:6px; font-weight:800; color:#334155; }
   .modal { padding:26px; }
   .insight-featured { grid-template-columns:1fr; }
   .hero-visual { margin:44px auto 26px; transform:scale(.82); }
+  .hero-visual-wrap { max-width:280px; margin-top:36px; }
+  .stat-stack { flex-direction:row; }
+  .team-grid { grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .container { width: calc(100% - 32px); }
+  .hero { padding:56px 0 44px; }
+  .hero h1 { font-size: clamp(1.9rem, 9vw, 2.4rem); }
+  .hero-subtitle { font-size:1rem; }
+  .hero-actions { flex-direction:column; align-items:stretch; }
+  .hero-actions .button { width:100%; }
+  .section { padding:52px 0; }
+  .card-grid.three { grid-template-columns:1fr; }
+  .stat-stack { flex-direction:column; }
+  .about-copy .check-list-plain { grid-template-columns:1fr; }
+  .brand-text { font-size:.86rem; }
+  .brand-mark { width:38px; height:38px; }
+  .event-card { padding:16px; }
+  .modal { padding:20px; border-radius:18px; }
+  .modal h3 { font-size:1.25rem; }
+  .mosaic-grid { max-width:100%; }
+  .sponsor-benefits h3 { font-size:1.15rem; }
+  .offer-card h3 { font-size:1.9rem; }
+  .button, .tab-btn, input, select, textarea { font-size:16px; }
+  .ecosystem-chart-col svg { max-width:220px; }
 }
