@@ -31,7 +31,7 @@ a { color: inherit; text-decoration: none; }
 .brand-mark { display:grid; place-items:center; width:44px; height:44px; border-radius:12px; background:var(--gold); color:var(--navy); letter-spacing:.04em; }
 .brand-text { font-size: 1rem; }
 .nav { display:flex; gap:22px; align-items:center; font-weight:700; font-size:.92rem; }
-.nav a { color:#334155; }
+.nav a { color:white; }
 .nav a:hover { color: var(--blue); }
 .nav-cta { background: var(--gold); color:var(--navy) !important; padding:10px 16px; border-radius:999px; }
 .mobile-menu { display:none; border:0; background:transparent; font-size:28px; }
@@ -80,6 +80,50 @@ h1, h2, h3 { line-height:1.12; margin:0 0 16px; color:var(--navy); }
 .card-grid.three { grid-template-columns:repeat(3, 1fr); }
 .info-card, .startup-card, .insight-card, .offer-card, .ecosystem-card, .event-card, .tabs { background:white; border:1px solid var(--border); border-radius:22px; padding:22px; box-shadow: var(--shadow); }
 .info-card h3, .startup-card h3, .insight-card h3, .offer-card h3 { font-size:1.25rem; }
+.about-visual { border-radius:22px; overflow:hidden; box-shadow:var(--shadow); min-height:280px; position:relative; }
+.about-visual img { width:100%; height:100%; object-fit:cover; display:block; }
+.about-visual::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,23,42,0) 45%, rgba(15,23,42,.5) 100%); pointer-events:none; }
+
+
+/* Platform pillars — asymmetric row, middle card inverted */
+.info-card { position:relative; padding-top:38px; }
+.pillar-num { position:absolute; top:20px; left:22px; font-size:.72rem; font-weight:900; letter-spacing:.06em; color:var(--gold); }
+.info-card.inverted { background:var(--navy); border-color:var(--navy); color:#fff; }
+.info-card.inverted h3 { color:#fff; }
+.info-card.inverted p { color:#cbd5e1; }
+.info-card.inverted .pillar-num { color:var(--gold); }
+.info-card.inverted::after { content:''; position:absolute; top:20px; right:22px; width:26px; height:26px; border-radius:8px; background:var(--gold); }
+
+/* About / stat grid — replaces the plain "What is CSR?" intro */
+.about-grid { display:grid; grid-template-columns:.78fr 1fr 1.05fr; gap:26px; align-items:stretch; }
+.stat-stack { display:flex; flex-direction:column; gap:16px; }
+.stat-card { background:white; border:1px solid var(--border); border-radius:20px; padding:20px; box-shadow:var(--shadow); flex:1; display:flex; flex-direction:column; justify-content:center; }
+.stat-card .stat-value { font-size:1.9rem; font-weight:900; color:var(--navy); line-height:1; }
+.stat-card .stat-label { color:var(--muted); font-size:.86rem; margin-top:8px; font-weight:700; }
+.stat-card.inverted { background:var(--navy); border-color:var(--navy); }
+.stat-card.inverted .stat-value { color:var(--gold); }
+.stat-card.inverted .stat-label { color:#cbd5e1; }
+.about-visual { border-radius:22px; overflow:hidden; box-shadow:var(--shadow); min-height:280px; position:relative; }
+.about-visual svg { width:100%; height:100%; display:block; }
+.about-copy { display:flex; flex-direction:column; justify-content:center; }
+.about-copy .check-list-plain { list-style:none; padding:0; margin:20px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; }
+.about-copy .check-list-plain li { padding-left:24px; position:relative; font-weight:700; font-size:.92rem; color:#334155; }
+.about-copy .check-list-plain li:before { content:"◆"; position:absolute; left:0; top:.15em; color:var(--gold); font-size:.6em; }
+
+/* Wave dividers between sections */
+.wave-divider { width:100%; overflow:hidden; line-height:0; background:var(--divider-bg, transparent); }
+.wave-divider svg { display:block; width:100%; height:64px; }
+.wave-divider path.fill { fill:var(--divider-fill, var(--white)); }
+.wave-divider path.hairline { fill:none; stroke:var(--gold); stroke-width:1.5; opacity:.45; }
+
+/* Editorial board / reviewers — tinted photo-card team grid */
+.team-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:20px; }
+.team-card { background:white; border:1px solid var(--border); border-radius:22px; overflow:hidden; box-shadow:var(--shadow); }
+.team-photo { height:150px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--tint1), var(--tint2)); }
+.team-avatar { width:60px; height:60px; border-radius:50%; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.05rem; }
+.team-body { padding:18px 20px 20px; }
+.team-body h3 { font-size:1.05rem; margin:0 0 2px; }
+.team-role { color:var(--blue); font-weight:800; font-size:.82rem; margin:0 0 10px; }
 .filters { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:12px; margin:22px 0; }
 .startup-card-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
 .avatar { width:44px; height:44px; border-radius:50%; background:#0f172a; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; flex-shrink:0; }
@@ -215,6 +259,10 @@ label { display:grid; gap:6px; font-weight:800; color:#334155; }
   .nav.open { display:flex; }
   .hero-grid, .sponsor-grid, .form-grid, .sponsor-grid-main { grid-template-columns:1fr; }
   .card-grid.three { grid-template-columns:1fr; }
+  .about-grid { grid-template-columns:1fr; }
+  .about-visual { min-height:200px; order:-1; }
+  .about-copy .check-list-plain { grid-template-columns:1fr; }
+  .wave-divider svg { height:40px; }
   .filters { grid-template-columns:1fr; }
   .event-card { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr; }
