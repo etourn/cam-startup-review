@@ -182,7 +182,7 @@ function trackEvent(name, props = {}) {
     return;
   }
   // GA4 (gtag.js):
-  // window.gtag?.('event', name, props);
+  window.gtag?.('event', name, props);
   // Plausible:
   // window.plausible?.(name, { props });
   // Segment/other:
