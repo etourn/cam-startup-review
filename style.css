@@ -317,7 +317,7 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
   .card-grid.three { grid-template-columns:1fr; }
   .stat-stack { flex-direction:column; }
   .about-copy .check-list-plain { grid-template-columns:1fr; }
-  .brand-text { font-size:.86rem; }
+  .brand-text { font-size:.86rem; color: white;}
   .brand-mark { width:38px; height:38px; }
   .event-card { padding:16px; }
   .modal { padding:20px; border-radius:18px; }
