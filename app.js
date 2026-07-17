@@ -158,6 +158,44 @@ const GOOGLE_FORMS_CONFIG = {
   }
 };
 
+/* ============================================================
+   Analytics (placeholder)
+   ------------------------------------------------------------
+   Provider-agnostic event tracker. Every meaningful interaction
+   below (form submissions, validation failures, filter usage,
+   tab switches, ecosystem clicks, insight opens, CTA clicks)
+   already calls trackEvent(name, props) — nothing else needs to
+   change when a real provider is wired up.
+
+   Right now ANALYTICS_ENABLED is false, so events just log to the
+   console for visibility during development. To go live:
+   1. Load a provider's script tag in index.html (GA4, Plausible, etc).
+   2. Flip ANALYTICS_ENABLED to true below.
+   3. Uncomment the relevant provider call inside trackEvent().
+   ============================================================ */
+const ANALYTICS_ENABLED = true;
+
+function trackEvent(name, props = {}) {
+  const payload = { event: name, ...props };
+  if (!ANALYTICS_ENABLED) {
+    console.info('[analytics:placeholder]', payload);
+    return;
+  }
+  // GA4 (gtag.js):
+  // window.gtag?.('event', name, props);
+  // Plausible:
+  // window.plausible?.(name, { props });
+  // Segment/other:
+  // window.analytics?.track(name, props);
+}
+
+// Small debounce so free-typing in search/filter fields doesn't fire
+// an analytics event per keystroke.
+function debounce(fn, wait = 500) {
+  let t;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+}
+
 const startupGrid = document.getElementById('startupGrid');
 const searchInput = document.getElementById('searchInput');
 const sectorFilter = document.getElementById('sectorFilter');
@@ -350,6 +388,7 @@ function renderInsights() {
 function openInsightModal(idx) {
   const i = insights[idx];
   if (!i) return;
+  trackEvent('insight_open', { title: i.title, category: i.category });
   const overlay = document.getElementById('insightModalOverlay');
   const modal = document.getElementById('insightModal');
   modal.innerHTML = `
@@ -400,18 +439,138 @@ function setupTabs() {
       document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).classList.add('active');
+      trackEvent('form_tab_switch', { tab: btn.dataset.tab });
     });
   });
 }
+
+/* ============================================================
+   Validation-ready interactions
+   ------------------------------------------------------------
+   Declarative rules per form, checked on submit (and re-checked
+   per-field as the person types once a field has been flagged).
+   Native browser validation is off (novalidate on each <form>)
+   so every form gets the same inline-error styling and copy.
+   ============================================================ */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^[0-9+()\-.\s]{7,}$/;
+
+const FORM_RULES = {
+  startupForm: {
+    startupName: { required: true, label: 'Startup name' },
+    founderName: { required: true, label: 'Founder name' },
+    email: { required: true, pattern: EMAIL_RE, message: 'Enter a valid email address.' },
+    description: { required: true, minLength: 20, message: 'Give a few more words so reviewers know what the startup does (20+ characters).' },
+    website: { pattern: /^https?:\/\/.+\..+/, message: 'Enter a full URL starting with http:// or https://, or leave this blank.' }
+  },
+  partnerForm: {
+    organization: { required: true, label: 'Organization' },
+    contactPerson: { required: true, label: 'Contact person' },
+    email: { required: true, pattern: EMAIL_RE, message: 'Enter a valid email address.' },
+    phone: { required: true, pattern: PHONE_RE, message: 'Enter a valid phone number.' }
+  },
+  feedbackForm: {
+    feature: { required: true, minLength: 3, label: 'Most valuable feature' }
+  }
+};
+
+function fieldErrorEl(field) { return field.closest('label')?.querySelector('.field-error') || null; }
+
+function showFieldError(field, message) {
+  field.classList.add('invalid');
+  field.setAttribute('aria-invalid', 'true');
+  const errEl = fieldErrorEl(field);
+  if (errEl) { errEl.textContent = message; errEl.classList.add('visible'); }
+}
+function clearFieldError(field) {
+  field.classList.remove('invalid');
+  field.removeAttribute('aria-invalid');
+  const errEl = fieldErrorEl(field);
+  if (errEl) { errEl.textContent = ''; errEl.classList.remove('visible'); }
+}
+
+// Validates one field against its rule; returns an error message, or '' if valid.
+function checkField(field, rule) {
+  const value = field.value.trim();
+  if (rule.required && !value) return `${rule.label || 'This field'} is required.`;
+  if (value && rule.minLength && value.length < rule.minLength) return rule.message || `${rule.label || 'This field'} is too short.`;
+  if (value && rule.pattern && !rule.pattern.test(value)) return rule.message || `${rule.label || 'This field'} looks invalid.`;
+  return '';
+}
+
+// Validates the whole form; shows/clears inline errors; returns list of invalid field names.
+function validateForm(form) {
+  const rules = FORM_RULES[form.id] || {};
+  const invalidFields = [];
+  Object.entries(rules).forEach(([name, rule]) => {
+    const field = form.elements[name];
+    if (!field) return;
+    const message = checkField(field, rule);
+    if (message) { showFieldError(field, message); invalidFields.push(name); }
+    else clearFieldError(field);
+  });
+  return invalidFields;
+}
+
+// Live-clear a field's error as soon as it becomes valid again, so people
+// aren't stuck staring at a red box after they've already fixed it.
+function setupLiveValidation() {
+  Object.entries(FORM_RULES).forEach(([formId, rules]) => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    Object.entries(rules).forEach(([name, rule]) => {
+      const field = form.elements[name];
+      if (!field) return;
+      field.addEventListener('input', () => {
+        if (!field.classList.contains('invalid')) return;
+        if (!checkField(field, rule)) clearFieldError(field);
+      });
+    });
+  });
+}
+
+function showFormMessage(form, type, text) {
+  const msgEl = form.querySelector('.form-message');
+  if (!msgEl) return;
+  msgEl.textContent = text;
+  msgEl.className = `form-message ${type}`;
+  msgEl.hidden = false;
+}
+function hideFormMessage(form) {
+  const msgEl = form.querySelector('.form-message');
+  if (msgEl) msgEl.hidden = true;
+}
+
 function handleForms() {
   document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', async e => {
       e.preventDefault();
+      hideFormMessage(form);
       const type = form.id.replace('Form','');
+
+      // Honeypot check — bots fill every field, humans never see this one.
+      if (form.elements.companyWebsite && form.elements.companyWebsite.value) {
+        trackEvent('form_spam_blocked', { form: form.id });
+        return; // silently drop — don't tell the bot it was caught
+      }
+
+      const invalidFields = validateForm(form);
+      if (invalidFields.length) {
+        trackEvent('form_validation_error', { form: form.id, fields: invalidFields });
+        showFormMessage(form, 'error', 'Please fix the highlighted fields before submitting.');
+        const firstInvalid = form.elements[invalidFields[0]];
+        firstInvalid.focus();
+        firstInvalid.classList.add('shake');
+        firstInvalid.addEventListener('animationend', () => firstInvalid.classList.remove('shake'), { once: true });
+        return;
+      }
+
       const data = Object.fromEntries(new FormData(form).entries());
+      trackEvent('form_submit_attempt', { form: form.id });
 
       // Send to the matching Google Form, if configured.
       const config = GOOGLE_FORMS_CONFIG[form.id];
+      let sendFailed = false;
       if (config) {
         const gBody = new URLSearchParams();
         Object.entries(config.fields).forEach(([localKey, entryId]) => {
@@ -423,6 +582,7 @@ function handleForms() {
           // expected here and the request still lands in the Sheet.
           await fetch(config.actionUrl, { method: 'POST', mode: 'no-cors', body: gBody });
         } catch (err) {
+          sendFailed = true;
           console.error('Google Forms submission failed:', err);
         }
       } else {
@@ -435,7 +595,14 @@ function handleForms() {
       localStorage.setItem('csrSubmissions', JSON.stringify(submissions.slice(0, 6)));
       form.reset();
       updateSubmissionLog();
-      alert('Thank you. Your submission has been sent.');
+
+      if (sendFailed) {
+        trackEvent('form_submit_error', { form: form.id });
+        showFormMessage(form, 'error', 'Something went wrong sending this — please try again in a moment.');
+      } else {
+        trackEvent('form_submit_success', { form: form.id });
+        showFormMessage(form, 'success', 'Thank you — your submission has been sent.');
+      }
     });
   });
 }
@@ -477,6 +644,7 @@ function setupEcosystemTooltip() {
     const slices = getEcosystemSlices();
     const slice = slices[Number(seg.dataset.index)];
     if (slice) renderEcosystemDetail(slice);
+    trackEvent('ecosystem_segment_click', { category: seg.dataset.category, count: seg.dataset.count });
     hideTooltip();
   });
 }
@@ -494,6 +662,7 @@ function setupTabLinks() {
   document.querySelectorAll('[data-tab-link]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
+      trackEvent('cta_click', { target: link.dataset.tabLink });
       const btn = document.querySelector(`.tab-btn[data-tab="${link.dataset.tabLink}"]`);
       if (btn) btn.click();
       document.getElementById('submit').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -516,10 +685,20 @@ renderEvents();
 renderHeroMetrics();
 setupTabs();
 handleForms();
+setupLiveValidation();
 updateSubmissionLog();
 setupMobileNav();
 setupEcosystemTooltip();
 setupInsightModal();
 setupTabLinks();
-[searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', renderStartups));
-document.getElementById('ecosystemSearch').addEventListener('input', renderEcosystem);
+
+const trackDirectoryFilter = debounce(() => trackEvent('directory_filter', {
+  term: searchInput.value,
+  sector: sectorFilter.value,
+  stage: stageFilter.value,
+  supportTag: supportFilter.value
+}));
+[searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', () => { renderStartups(); trackDirectoryFilter(); }));
+
+const trackEcosystemSearch = debounce(term => trackEvent('ecosystem_search', { term }));
+document.getElementById('ecosystemSearch').addEventListener('input', e => { renderEcosystem(); trackEcosystemSearch(e.target.value); });
