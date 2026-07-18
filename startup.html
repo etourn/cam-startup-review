@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- same <head> as index.html: fonts, meta, style.css -->
+  <title>Startup Directory | Cambodia Startup Review</title>
+</head>
+<body>
+  <header class="site-header"><!-- same header as index.html --></header>
+
+  <main>
+    <section class="section" id="directory" style="padding-top:4rem;">
+      <div class="container">
+        <div class="section-heading split">
+          <div><h2>Discover startup profiles</h2></div>
+          <a class="button secondary small" href="#submit">Submit a Startup</a>
+        </div>
+        <div class="filters" aria-label="Startup filters">
+          <input type="search" id="searchInput" placeholder="Search startups, sectors, or support needs..." />
+          <select id="sectorFilter" aria-label="Filter by sector"><option value="all">All sectors</option></select>
+          <select id="stageFilter" aria-label="Filter by stage"><option value="all">All stages</option></select>
+          <select id="supportFilter" aria-label="Filter by support needed"><option value="all">All support needs</option></select>
+        </div>
+        <div class="startup-count" id="startupCount"></div>
+        <div class="card-grid" id="startupGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><!-- same footer as index.html --></footer>
+  <script src="app.js"></script>
+</body>
+</html>

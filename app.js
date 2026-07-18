@@ -702,3 +702,73 @@ const trackDirectoryFilter = debounce(() => trackEvent('directory_filter', {
 
 const trackEcosystemSearch = debounce(term => trackEvent('ecosystem_search', { term }));
 document.getElementById('ecosystemSearch').addEventListener('input', e => { renderEcosystem(); trackEcosystemSearch(e.target.value); });
+
+(function () {
+  const items = document.querySelectorAll('.feature-item');
+  const card = document.getElementById('featureCard');
+  const tag = document.getElementById('featureTag');
+  const name = document.getElementById('featureName');
+  const desc = document.getElementById('featureDesc');
+
+  if (!items.length || !card) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        items.forEach((i) => i.classList.remove('active'));
+        entry.target.classList.add('active');
+
+        card.style.opacity = 0;
+        setTimeout(() => {
+          tag.textContent = entry.target.dataset.tag;
+          name.textContent = entry.target.dataset.name;
+          desc.textContent = entry.target.dataset.desc;
+          card.style.opacity = 1;
+        }, 200);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0
+  });
+
+  items.forEach((item) => observer.observe(item));
+})();
+
+(function () {
+  const featureSection = document.getElementById('feature');
+  const card = document.getElementById('featureCard');
+  if (!featureSection || !card) return;
+
+  const popObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        card.classList.add('in-view');
+        popObserver.unobserve(featureSection); // only animate once
+      }
+    });
+  }, {
+    threshold: 0.3 // fires once ~30% of the section is visible
+  });
+
+  popObserver.observe(featureSection);
+})();
+
+<!-- inside #insightThumbs -->
+<div class="insight-thumb">
+  <img src="images/insight1.jpg" alt="">
+  <div class="insight-thumb-caption">Founder Story: Building for Local Problems</div>
+</div>
+
+<!-- inside #insightFeatured -->
+<img src="images/insight-hero.jpg" alt="">
+<div class="insights-hero-body">
+  <span class="insights-hero-label">Ecosystem Analysis</span>
+  <h3>Why Cambodia Needs a Startup Intelligence Platform</h3>
+  <p>A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.</p>
+</div>
+
+<!-- inside #insightGrid (now a <ul>) -->
+<li><a href="#">Founder Story: Building for Local Problems</a></li>
+<li><a href="#">What Sponsors Want from Startup Ecosystem Platforms</a></li>
