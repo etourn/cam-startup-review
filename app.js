@@ -672,17 +672,11 @@ function setupTabLinks() {
 
 // Keep the hero "sample profiles" metric honest as the sample data set grows,
 // instead of a hardcoded number that can silently drift out of sync.
-function renderHeroMetrics() {
-  const el = document.getElementById('heroStartupCount');
-  if (el) el.textContent = startups.length;
-}
-
 populateFilters();
 renderStartups();
 renderEcosystem();
 renderInsights();
 renderEvents();
-renderHeroMetrics();
 setupTabs();
 handleForms();
 setupLiveValidation();
@@ -754,21 +748,3 @@ document.getElementById('ecosystemSearch').addEventListener('input', e => { rend
 
   popObserver.observe(featureSection);
 })();
-
-<!-- inside #insightThumbs -->
-<div class="insight-thumb">
-  <img src="images/insight1.jpg" alt="">
-  <div class="insight-thumb-caption">Founder Story: Building for Local Problems</div>
-</div>
-
-<!-- inside #insightFeatured -->
-<img src="images/insight-hero.jpg" alt="">
-<div class="insights-hero-body">
-  <span class="insights-hero-label">Ecosystem Analysis</span>
-  <h3>Why Cambodia Needs a Startup Intelligence Platform</h3>
-  <p>A neutral platform can help partners see trends, gaps, and opportunities beyond informal networks.</p>
-</div>
-
-<!-- inside #insightGrid (now a <ul>) -->
-<li><a href="#">Founder Story: Building for Local Problems</a></li>
-<li><a href="#">What Sponsors Want from Startup Ecosystem Platforms</a></li>
