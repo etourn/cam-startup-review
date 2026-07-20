@@ -480,6 +480,7 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
 
 .section.light {
   padding: 6rem 2rem; /* match about-editorial's vertical rhythm */
+  background-color: #eef0e5;
 }
 
 .section-heading h2 {
@@ -543,4 +544,3 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
     border-bottom: none;
   }
 }
-
