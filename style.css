@@ -57,7 +57,7 @@ h1, h2, h3 { line-height:1.12; margin:0 0 16px; color:var(--navy); }
 .section.light { background:var(--light); }
 .section-heading { margin-bottom:28px; }
 .section-heading.split { display:flex; justify-content:space-between; align-items:flex-end; gap:22px; }
-.section h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); }
+.section h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); font-family: sans-serif;}
 .center { text-align:center; }
 .muted { color:var(--muted); }
 .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; }
@@ -370,17 +370,18 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
 }
 
 .feature-item {
+  font-family: 'Source Serif 4', serif;
   font-size: 1.6rem;
   font-weight: 500;
   color: #cbd5e1;
   padding: 8vh 0;
-  transition: color 0.35s ease, font-weight 0.35s ease;
+  transition: color 0.35s ease, font-weight 0.25s ease;
   cursor: default;
 }
 
 .feature-item.active {
   color: var(--ink, #1a1a1a);
-  font-weight: 700;
+  font-weight: 350;
 }
 
 @media (max-width: 768px) {
@@ -398,10 +399,12 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
 }
 
 .feature-cta-link {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 1rem;
   color: var(--accent, #f26522);
   text-decoration: none;
@@ -431,9 +434,9 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
 
 .dropcap-letter {
   float: left;
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: 0.8;
-  font-weight: 600;
+  font-weight: 200;
   padding-right: 0.5rem;
   padding-top: 0.3rem;
 }
@@ -480,8 +483,10 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
 }
 
 .section-heading h2 {
-  font-family: 'IBM Plex Sans', sans-serif; /* keep headings sans, consistent with your nav/brand */
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
   font-size: 2.2rem;
+  font-weight: 500;
 }
 
 .card-grid.three {
