@@ -12,47 +12,59 @@ const startups = [
   { name: 'StaffLoop', sector: 'HRTech', stage: 'Early', founder: 'Sample Founder', location: 'Phnom Penh', desc: 'Shift-based hiring platform connecting hospitality businesses with verified part-time workers.', support: 'Hospitality partners, verification agencies, and recruiters.', supportTag: 'Talent & hiring', funding: 'Bootstrapped', website: 'staffloop.kh (demo)' }
 ];
 
-const ecosystem = [
-  { category: 'Startups', linkOut: true, note: 'All profiled startups appear in the full directory above.' },
-  { category: 'Investors', actors: [
-    { name: 'Mekong Angel Network', role: 'Angel investor network', website: 'mekongangels.kh (demo)' },
-    { name: 'Khmer Ventures Capital', role: 'Early-stage VC fund', website: 'khmerventures.kh (demo)' },
-    { name: 'Emerging Markets Innovation Fund', role: 'Corporate venture arm', website: 'emif.kh (demo)' }
+const ecosystemChartData = [
+  { key: 'gov', label: 'Government & Regulators', color: 'var(--eco-c1)', orgs: [
+    ['Ministry of Economy and Finance', 'Policy'],
+    ['Ministry of Post and Telecommunications', 'Regulator'],
+    ['National Bank of Cambodia', 'Regulator'],
+    ['General Department of Taxation', 'Policy'],
+    ['Cambodia Investment Board (CDC)', 'Policy'],
+    ['Ministry of Commerce', 'Regulator'],
+    ['National ICT Development Authority', 'Policy'],
+    ['Ministry of Industry, Science, Tech & Innovation', 'Policy'],
+    ['Phnom Penh SEZ Authority', 'Regulator'],
+    ['National Council for Sustainable Development', 'Policy']
   ]},
-  { category: 'Incubators & Accelerators', actors: [
-    { name: 'TechoStartup Center', role: 'National incubator program', website: 'techostartup.gov.kh (demo)' },
-    { name: 'Impact Hub Phnom Penh', role: 'Accelerator & startup programs', website: 'impacthub.kh (demo)' },
-    { name: 'Smart Axiata Digital Accelerator', role: 'Corporate accelerator', website: 'smart.com.kh (demo)' }
+  { key: 'vc', label: 'Investors & VC Funds', color: 'var(--eco-c2)', orgs: [
+    ['Insignia Ventures Partners', 'VC'],
+    ['Genesis Capital', 'VC'],
+    ['Mekong Business Initiative', 'Investor']
   ]},
-  { category: 'Universities', actors: [
-    { name: 'Royal University of Phnom Penh', role: 'Entrepreneurship center', website: 'rupp.edu.kh (demo)' },
-    { name: 'Institute of Technology of Cambodia', role: 'STEM & engineering programs', website: 'itc.edu.kh (demo)' },
-    { name: 'CamEd Business School', role: 'Career & startup readiness office', website: 'cam-ed.com (demo)' }
+  { key: 'acc', label: 'Accelerators & Incubators', color: 'var(--eco-c3)', orgs: [
+    ['Impact Hub Phnom Penh', 'Incubator'],
+    ['SmallWorld Cambodia', 'Accelerator'],
+    ['Emerging Markets Consulting Labs', 'Accelerator']
   ]},
-  { category: 'Government Actors', actors: [
-    { name: 'Ministry of Economy and Finance', role: 'Digital economy policy body', website: 'mef.gov.kh (demo)' },
-    { name: 'National Council for Science, Technology & Innovation', role: 'Innovation & STI strategy', website: 'ncsti.gov.kh (demo)' },
-    { name: 'General Department of Digital Economy', role: 'Startup support programs', website: 'dtc.gov.kh (demo)' }
+  { key: 'uni', label: 'Universities & Research', color: 'var(--eco-c4)', orgs: [
+    ['Royal University of Phnom Penh', 'University'],
+    ['Institute of Technology of Cambodia', 'University'],
+    ['CamTech University', 'Research']
   ]},
-  { category: 'Corporate Innovation', actors: [
-    { name: 'ABA Bank Innovation Lab', role: 'Banking innovation partner', website: 'ababank.com (demo)' },
-    { name: 'Smart Axiata', role: 'Telecom innovation partner', website: 'smart.com.kh (demo)' },
-    { name: 'Wing Bank', role: 'Fintech corporate partner', website: 'wingbank.com.kh (demo)' }
+  { key: 'cowork', label: 'Coworking & Innovation Hubs', color: 'var(--eco-c5)', orgs: [
+    ['Lakehouse Coworking', 'Coworking'],
+    ['Factory Phnom Penh', 'Innovation Hub'],
+    ['Emerald Hub', 'Coworking']
   ]},
-  { category: 'Development Partners', actors: [
-    { name: 'UNDP Cambodia', role: 'Innovation & SDG programs', website: 'undp.org/cambodia (demo)' },
-    { name: 'GIZ Cambodia', role: 'Private sector development', website: 'giz.de (demo)' },
-    { name: 'The Asia Foundation', role: 'Entrepreneurship ecosystem grants', website: 'asiafoundation.org (demo)' }
+  { key: 'media', label: 'Media & Community', color: 'var(--eco-c6)', orgs: [
+    ['Cambodia Startup Review', 'Media'],
+    ['Techsauce Cambodia', 'Community'],
+    ['Startup Cambodia FB Group', 'Community']
   ]},
-  { category: 'Co-working Spaces', actors: [
-    { name: 'The Desk Cowork', role: 'Coworking & community space', website: 'thedesk.asia (demo)' },
-    { name: 'Emerald Hub', role: 'Coworking & event venue', website: 'emeraldhub.kh (demo)' }
+  { key: 'corp', label: 'Corporates & Enterprise Partners', color: 'var(--eco-c7)', orgs: [
+    ['Smart Axiata', 'Corporate'],
+    ['ABA Bank', 'Corporate'],
+    ['Wing Bank', 'Corporate'],
+    ['Prince Group Digital', 'Corporate']
   ]},
-  { category: 'Media & Events', actors: [
-    { name: 'Cambodia Startup Review', role: 'Ecosystem media & demo days', website: 'csr.toptimize.kh (demo)' },
-    { name: 'Techo Startup Demo Day', role: 'Annual pitch competition', website: 'techostartup.gov.kh (demo)' }
+  { key: 'ngo', label: 'NGOs & Development Partners', color: 'var(--eco-c8)', orgs: [
+    ['USAID Cambodia', 'Development'],
+    ['GIZ Cambodia', 'Development']
+  ]},
+  { key: 'prof', label: 'Professional Services & Mentors', color: 'var(--eco-c9)', orgs: [
+    ['DFDL Legal', 'Legal'],
+    ['Mekong Strategic Partners', 'Advisory']
   ]}
-];
+].map(d => ({ ...d, count: d.orgs.length }));
 
 const insights = [
   {
@@ -244,94 +256,154 @@ function renderStartups() {
   `).join('');
 }
 
-const donutColors = ['#0f172a', '#1e3a8a', '#1d4ed8', '#0891b2', '#0d9488', '#f59e0b', '#d97706', '#92400e', '#64748b'];
+// Ecosystem donut widget: scroll-linked reveal, hover quick-look, click for
+// full org list, and a live search across all mapped organizations.
+function initEcosystemChart() {
+  const svg = document.getElementById('ecoDonutSvg');
+  const track = document.getElementById('ecoScrollTrack');
+  const legendEl = document.getElementById('ecoLegend');
+  const totalNumEl = document.getElementById('ecoTotalNum');
+  const infoCard = document.getElementById('ecoInfoCard');
+  const searchInput = document.getElementById('ecosystemSearch');
+  if (!svg || !track) return;
 
-function getEcosystemSlices() {
-  return ecosystem.map(e => e.linkOut
-    ? { category: e.category, count: startups.length, type: 'startups' }
-    : { category: e.category, count: e.actors.length, type: 'actors', actors: e.actors }
-  );
-}
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const cx = 150, cy = 150, r = 100, sw = 34, gap = 1.6;
+  const total = ecosystemChartData.reduce((s, d) => s + d.count, 0);
 
-function buildBigDonut(slices) {
-  const size = 260, stroke = 34;
-  const r = (size - stroke) / 2;
-  const c = 2 * Math.PI * r;
-  const cx = size / 2, cy = size / 2;
-  const total = slices.reduce((sum, s) => sum + s.count, 0);
-  let offset = 0;
-  const circles = slices.map((s, i) => {
-    const seg = (s.count / total) * c;
-    const color = donutColors[i % donutColors.length];
-    const dashoffset = -offset;
-    offset += seg;
-    return `<circle class="donut-seg" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}"
-      stroke-dasharray="${Math.max(seg - 3, 1)} ${c}" stroke-dashoffset="${dashoffset}"
-      data-index="${i}" data-category="${s.category}" data-count="${s.count}"></circle>`;
-  }).join('');
-  return `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" class="donut big">
-    <g transform="rotate(-90 ${cx} ${cy})">${circles}</g>
-    <text x="${cx}" y="${cy - 10}" text-anchor="middle" dominant-baseline="central" class="donut-label">${total}</text>
-    <text x="${cx}" y="${cy + 16}" text-anchor="middle" dominant-baseline="central" class="donut-sublabel">organizations mapped</text>
-  </svg>`;
-}
+  function polarToCartesian(cx, cy, r, angleDeg) {
+    const a = (angleDeg - 90) * Math.PI / 180;
+    return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+  }
+  function describeArc(cx, cy, r, startAngle, endAngle) {
+    const start = polarToCartesian(cx, cy, r, startAngle);
+    const end = polarToCartesian(cx, cy, r, endAngle);
+    const largeArc = endAngle - startAngle <= 180 ? 0 : 1;
+    return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 1 ${end.x} ${end.y}`;
+  }
 
-function renderEcosystemDetail(slice) {
-  const panel = document.getElementById('ecosystemDetail');
-  const entries = slice.type === 'startups'
-    ? startups.map(s => ({ name: s.name, role: `${s.sector} · ${s.stage}`, website: s.website }))
-    : slice.actors;
-  panel.innerHTML = `
-    <div class="detail-header"><h3>${slice.category}</h3><span class="badge">${slice.count} org${slice.count === 1 ? '' : 's'}</span></div>
-    <div class="detail-list">
-      ${entries.map(a => `
-        <div class="actor-item">
-          <div class="actor-name">${a.name}</div>
-          <div class="muted small">${a.role}</div>
-          <div class="card-link small">${a.website}</div>
-        </div>
-      `).join('')}
-    </div>`;
-}
+  let angle = 0;
+  const segEls = [];
 
-function renderEcosystemSearchResults(term) {
-  const panel = document.getElementById('ecosystemDetail');
-  const slices = getEcosystemSlices();
-  const matches = [];
-  slices.forEach(s => {
-    const entries = s.type === 'startups'
-      ? startups.map(st => ({ name: st.name, role: `${st.sector} · ${st.stage}`, website: st.website }))
-      : s.actors;
-    entries.filter(a => [a.name, a.role].join(' ').toLowerCase().includes(term))
-      .forEach(a => matches.push({ ...a, category: s.category }));
+  ecosystemChartData.forEach(d => {
+    const sweep = (d.count / total) * 360;
+    const startA = angle + gap / 2;
+    const endA = angle + sweep - gap / 2;
+    const path = document.createElementNS(svgNS, 'path');
+    path.setAttribute('d', describeArc(cx, cy, r, startA, endA));
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', d.color);
+    path.setAttribute('stroke-width', sw);
+    path.setAttribute('stroke-linecap', 'round');
+    path.classList.add('eco-segment');
+    path.dataset.key = d.key;
+    svg.appendChild(path);
+
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+
+    path.addEventListener('mouseenter', () => showQuickLook(d));
+    path.addEventListener('mouseleave', () => { if (activeKey !== d.key) showDefault(); });
+    path.addEventListener('click', () => selectSegment(d));
+
+    segEls.push({ path, len, data: d });
+    angle += sweep;
+
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.id = 'eco-legend-' + d.key;
+    item.innerHTML = `<span class="sw" style="background:${d.color}"></span>${d.label}`;
+    legendEl.appendChild(item);
   });
-  if (!matches.length) {
-    panel.innerHTML = `<div class="empty-state">No organizations match "${term}".</div>`;
-    return;
-  }
-  panel.innerHTML = `
-    <div class="detail-header"><h3>Search results</h3><span class="badge">${matches.length} match${matches.length === 1 ? '' : 'es'}</span></div>
-    <div class="detail-list">
-      ${matches.map(a => `
-        <div class="actor-item">
-          <div class="actor-name">${a.name} <span class="muted small">— ${a.category}</span></div>
-          <div class="muted small">${a.role}</div>
-          <div class="card-link small">${a.website}</div>
-        </div>
-      `).join('')}
-    </div>`;
-}
 
-function renderEcosystem() {
-  const term = (document.getElementById('ecosystemSearch')?.value || '').toLowerCase();
-  const chartCol = document.getElementById('ecosystemChart');
-  const slices = getEcosystemSlices();
-  chartCol.innerHTML = buildBigDonut(slices);
-  if (term) {
-    renderEcosystemSearchResults(term);
-  } else {
-    document.getElementById('ecosystemDetail').innerHTML = `<p class="muted">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>`;
+  const n = ecosystemChartData.length;
+  track.style.height = (n * 55 + 100) + 'vh';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function getTargetProgress() {
+    const rect = track.getBoundingClientRect();
+    const scrollable = rect.height - window.innerHeight;
+    const progress = scrollable > 0 ? (-rect.top) / scrollable : (rect.top < 0 ? 1 : 0);
+    return Math.max(0, Math.min(1, progress));
   }
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  let smoothProgress = 0;
+  function render() {
+    const target = reduceMotion ? 1 : getTargetProgress();
+    smoothProgress += (target - smoothProgress) * (reduceMotion ? 1 : 0.12);
+    if (Math.abs(target - smoothProgress) < 0.0005) smoothProgress = target;
+
+    let runningCount = 0;
+    segEls.forEach((s, i) => {
+      const windowStart = i / n;
+      const windowSize = 1 / n;
+      let local = (smoothProgress - windowStart) / windowSize;
+      local = Math.max(0, Math.min(1, local));
+      const eased = easeOutCubic(local);
+      s.path.style.strokeDashoffset = s.len * (1 - eased);
+      runningCount += s.data.count * eased;
+
+      const legendItem = document.getElementById('eco-legend-' + s.data.key);
+      if (legendItem) legendItem.classList.toggle('on', local > 0.05);
+    });
+    totalNumEl.textContent = Math.round(runningCount);
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+
+  let activeKey = null;
+
+  function showDefault() {
+    infoCard.innerHTML = `<p class="hint">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>`;
+  }
+  function showQuickLook(d) {
+    if (activeKey) return;
+    infoCard.innerHTML = `
+      <div class="eco-info-head"><div class="dot" style="background:${d.color}"></div><div class="title">${d.label}</div></div>
+      <div class="eco-info-count">${d.count} organization${d.count > 1 ? 's' : ''} mapped</div>
+      <p class="hint" style="margin:0">Click this slice to see the full list.</p>`;
+  }
+  function selectSegment(d) {
+    activeKey = d.key;
+    segEls.forEach(s => s.path.classList.toggle('active', s.data.key === d.key));
+    renderList(d);
+    trackEvent('ecosystem_segment_click', { category: d.label, count: d.count });
+  }
+  function renderList(d) {
+    const items = d.orgs.map(([name, role]) => `<li><span>${name}</span><span class="role">${role}</span></li>`).join('');
+    infoCard.innerHTML = `
+      <div class="eco-info-head"><div class="dot" style="background:${d.color}"></div><div class="title">${d.label}</div></div>
+      <div class="eco-info-count">${d.count} organization${d.count > 1 ? 's' : ''} mapped</div>
+      <ul class="eco-org-list">${items}</ul>`;
+  }
+
+  const trackEcosystemSearch = debounce(term => trackEvent('ecosystem_search', { term }));
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    trackEcosystemSearch(searchInput.value);
+    if (!q) {
+      activeKey = null;
+      segEls.forEach(s => s.path.classList.remove('active'));
+      showDefault();
+      return;
+    }
+    const matches = [];
+    ecosystemChartData.forEach(d => {
+      d.orgs.forEach(([name, role]) => {
+        if (name.toLowerCase().includes(q) || role.toLowerCase().includes(q) || d.label.toLowerCase().includes(q)) {
+          matches.push({ name, role, label: d.label, color: d.color });
+        }
+      });
+    });
+    if (!matches.length) {
+      infoCard.innerHTML = `<p class="hint">No organizations or roles match "${searchInput.value}".</p>`;
+      return;
+    }
+    const items = matches.map(m => `<li><b>${m.name}</b><span>${m.role} · ${m.label}</span></li>`).join('');
+    infoCard.innerHTML = `<ul class="eco-search-results">${items}</ul>`;
+  });
 }
 const insightTints = [
   ['#0f172a', '#1e3a8a'],
@@ -612,43 +684,6 @@ function updateSubmissionLog() {
   if (!submissions.length) { log.innerHTML = '<p class="muted">No prototype submissions yet.</p>'; return; }
   log.innerHTML = submissions.map(s => `<div class="log-item">${s.type} submission captured • ${s.date}</div>`).join('');
 }
-function setupEcosystemTooltip() {
-  const tooltip = document.createElement('div');
-  tooltip.id = 'ecoTooltip';
-  tooltip.className = 'eco-tooltip';
-  document.body.appendChild(tooltip);
-  const chartCol = document.getElementById('ecosystemChart');
-
-  function showTooltip(seg, x, y) {
-    tooltip.innerHTML = `<strong>${seg.dataset.category}</strong><span>${seg.dataset.count} organization${seg.dataset.count === '1' ? '' : 's'}</span><span class="tooltip-link">Click to see full details</span>`;
-    tooltip.style.left = `${x + 16}px`;
-    tooltip.style.top = `${y + 16}px`;
-    tooltip.classList.add('visible');
-  }
-  function hideTooltip() { tooltip.classList.remove('visible'); }
-
-  chartCol.addEventListener('mouseover', e => {
-    const seg = e.target.closest('.donut-seg');
-    if (seg) showTooltip(seg, e.clientX, e.clientY);
-  });
-  chartCol.addEventListener('mousemove', e => {
-    const seg = e.target.closest('.donut-seg');
-    if (seg) { tooltip.style.left = `${e.clientX + 16}px`; tooltip.style.top = `${e.clientY + 16}px`; }
-  });
-  chartCol.addEventListener('mouseout', e => {
-    if (e.target.closest('.donut-seg')) hideTooltip();
-  });
-  chartCol.addEventListener('click', e => {
-    const seg = e.target.closest('.donut-seg');
-    if (!seg) return;
-    const slices = getEcosystemSlices();
-    const slice = slices[Number(seg.dataset.index)];
-    if (slice) renderEcosystemDetail(slice);
-    trackEvent('ecosystem_segment_click', { category: seg.dataset.category, count: seg.dataset.count });
-    hideTooltip();
-  });
-}
-
 function setupMobileNav() {
   document.getElementById('mobileMenu').addEventListener('click', () => document.getElementById('nav').classList.toggle('open'));
   document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')));
@@ -674,7 +709,7 @@ function setupTabLinks() {
 // instead of a hardcoded number that can silently drift out of sync.
 populateFilters();
 renderStartups();
-renderEcosystem();
+initEcosystemChart();
 renderInsights();
 renderEvents();
 setupTabs();
@@ -682,7 +717,6 @@ handleForms();
 setupLiveValidation();
 updateSubmissionLog();
 setupMobileNav();
-setupEcosystemTooltip();
 setupInsightModal();
 setupTabLinks();
 
@@ -694,8 +728,6 @@ const trackDirectoryFilter = debounce(() => trackEvent('directory_filter', {
 }));
 [searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', () => { renderStartups(); trackDirectoryFilter(); }));
 
-const trackEcosystemSearch = debounce(term => trackEvent('ecosystem_search', { term }));
-document.getElementById('ecosystemSearch').addEventListener('input', e => { renderEcosystem(); trackEcosystemSearch(e.target.value); });
 
 (function () {
   const items = document.querySelectorAll('.feature-item');

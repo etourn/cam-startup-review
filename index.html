@@ -180,11 +180,24 @@
           </div>
           <span class="badge">Sample data</span>
         </div>
-        <input type="search" id="ecosystemSearch" placeholder="Search organizations or roles..." style="margin-bottom:20px" />
-        <div class="ecosystem-chart-wrap">
-          <div class="ecosystem-chart-col" id="ecosystemChart"></div>
-          <div class="ecosystem-detail" id="ecosystemDetail">
-            <p class="muted">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>
+        <div class="eco-search">
+          <input id="ecosystemSearch" type="text" placeholder="Search organizations or roles...">
+        </div>
+        <div class="eco-scroll-track" id="ecoScrollTrack">
+          <div class="eco-chart-sticky">
+            <div class="eco-chart-row" id="ecoChartRow">
+              <div class="eco-donut-wrap">
+                <svg id="ecoDonutSvg" viewBox="0 0 300 300"></svg>
+                <div class="eco-center-label">
+                  <div class="num" id="ecoTotalNum">0</div>
+                  <div class="cap">ORGANIZATIONS MAPPED</div>
+                </div>
+              </div>
+              <div class="eco-info-card" id="ecoInfoCard">
+                <p class="hint">Hover a slice for a quick look. Click a slice to see the full list of organizations.</p>
+              </div>
+            </div>
+            <div class="eco-legend" id="ecoLegend"></div>
           </div>
         </div>
       </div>
