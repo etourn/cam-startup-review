@@ -217,12 +217,14 @@ const startupCount = document.getElementById('startupCount');
 
 function uniqueValues(key) { return [...new Set(startups.map(s => s[key]))].sort(); }
 function populateFilters() {
+  if (!sectorFilter) return; // this page has no directory grid (e.g. homepage teaser only)
   uniqueValues('sector').forEach(v => sectorFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
   uniqueValues('stage').forEach(v => stageFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
   uniqueValues('supportTag').forEach(v => supportFilter.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`));
 }
 function initials(name) { return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(); }
 function renderStartups() {
+  if (!startupGrid) return; // this page has no directory grid (e.g. homepage teaser only)
   const term = searchInput.value.toLowerCase();
   const sector = sectorFilter.value;
   const stage = stageFilter.value;
@@ -721,12 +723,14 @@ setupInsightModal();
 setupTabLinks();
 
 const trackDirectoryFilter = debounce(() => trackEvent('directory_filter', {
-  term: searchInput.value,
-  sector: sectorFilter.value,
-  stage: stageFilter.value,
-  supportTag: supportFilter.value
+  term: searchInput?.value,
+  sector: sectorFilter?.value,
+  stage: stageFilter?.value,
+  supportTag: supportFilter?.value
 }));
-[searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', () => { renderStartups(); trackDirectoryFilter(); }));
+if (searchInput) {
+  [searchInput, sectorFilter, stageFilter, supportFilter].forEach(el => el.addEventListener('input', () => { renderStartups(); trackDirectoryFilter(); }));
+}
 
 
 (function () {

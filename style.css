@@ -76,14 +76,38 @@ h1, h2, h3 { line-height:1.12; margin:0 0 16px; color:var(--navy); }
 .wave-divider path.fill { fill:var(--divider-fill, var(--white)); }
 .wave-divider path.hairline { fill:none; stroke:var(--gold); stroke-width:1.5; opacity:.45; }
 
-/* Editorial board / reviewers — tinted photo-card team grid */
-.team-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:20px; }
-.team-card { background:white; border:1px solid var(--border); border-radius:22px; overflow:hidden; box-shadow:var(--shadow); }
-.team-photo { height:150px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--tint1), var(--tint2)); }
-.team-avatar { width:60px; height:60px; border-radius:50%; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.05rem; }
-.team-body { padding:18px 20px 20px; }
-.team-body h3 { font-size:1.05rem; margin:0 0 2px; }
-.team-role { color:var(--blue); font-weight:800; font-size:.82rem; margin:0 0 10px; }
+/* Editorial board / reviewers — YC-style full-bleed photo card, name/role/description overlaid on image */
+.team-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:36px; }
+.team-card { background:none; border:none; border-radius:0; overflow:visible; box-shadow:none; }
+.team-photo {
+  position:relative;
+  aspect-ratio:4/5;
+  border-radius:16px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  background:linear-gradient(135deg, var(--tint1), var(--tint2));
+}
+.team-photo::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 75% 20%, rgba(255,255,255,.16), transparent 55%);
+}
+.team-photo::after {
+  content:'';
+  position:absolute; left:0; right:0; bottom:0; height:78%;
+  background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.72) 40%, transparent 100%);
+}
+.team-avatar {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:7rem; color:rgba(255,255,255,.14);
+  letter-spacing:-.02em;
+}
+.team-photo-text { position:relative; z-index:1; padding:24px; width:100%; }
+.team-photo-text h3 { font-family:inherit; font-weight:700; font-size:1.5rem; color:#fff; margin:0 0 4px; line-height:1.2; }
+.team-photo-text .team-role { color:rgba(255,255,255,.85); font-weight:400; font-size:.95rem; margin:0 0 14px; }
+.team-photo-text .team-desc { color:rgba(255,255,255,.92); font-weight:300; font-size:.92rem; line-height:1.45; margin:0; }
 .filters { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:12px; margin:22px 0; }
 .startup-card-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
 .avatar { width:44px; height:44px; border-radius:50%; background:#0f172a; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; flex-shrink:0; }
@@ -103,15 +127,18 @@ textarea { min-height:110px; resize:vertical; }
 .card-link.small { font-size:.78rem; margin-top:2px; }
 /* Ecosystem donut widget (scroll-linked reveal) — YC-style: black/white/orange, sharp corners */
 #ecosystem {
-  --eco-c1: #fcd9c8;
-  --eco-c2: #fbc6ad;
-  --eco-c3: #f9b291;
-  --eco-c4: #f68c5a;
-  --eco-c5: #f26522;
-  --eco-c6: #d4591e;
-  --eco-c7: #b64c1a;
-  --eco-c8: #793311;
-  --eco-c9: #3d1a09;
+  --eco-ink: #0a0a0a;
+  --eco-orange: #f26625;
+  --eco-c1: #0a0a0a;
+  --eco-c2: #262626;
+  --eco-c3: #404040;
+  --eco-c4: #5c5c5c;
+  --eco-c5: #8a5a34;
+  --eco-c6: #b8621f;
+  --eco-c7: #d9691c;
+  --eco-c8: var(--eco-orange);
+  --eco-c9: #ff8f45;
+  --eco-mono: ui-monospace, "SFMono-Regular", "IBM Plex Mono", Menlo, Consolas, monospace;
 }
 .eco-search { background:white; border:1.5px solid var(--eco-ink); border-radius:4px; padding:14px 18px; margin-bottom:24px; }
 .eco-search input { border:none; outline:none; width:100%; font-size:1rem; font-family:var(--eco-mono); color:var(--eco-ink); background:transparent; }
@@ -269,7 +296,7 @@ input.invalid:focus, select.invalid:focus, textarea.invalid:focus { outline-colo
   .mosaic-tile:hover, .mosaic-tile.offset-b:hover, .mosaic-tile.offset-c:hover { transform:translateY(-3px); }
   .modal { padding:26px; }
   .insight-featured { grid-template-columns:1fr; }
-  .team-grid { grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); }
+  .team-grid { grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:24px; }
 }
 
 @media (max-width: 520px) {
